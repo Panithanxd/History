@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <link rel="icon" href="boy1.png" />
+    <link rel="shortcut icon" href="boy1.png" />
+
+    <title>Tank-Deflash-1</title>
+    <meta name="description" content="Tank Deflash 1 HMI Monitor" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        padding-top: 80px; /* กัน top-bar */
+      }
+
+      .Name {
+        width: fit-content;
+        font-size: 36px;
+        font-weight: bold;
+        margin: 20px auto;
+        text-align: center;
+        background-color: #b2bec3;
+        border: 2px solid black;
+        padding: 10px 20px;
+        border-radius: 10px;
+      }
+
+      /*กรอบ icon*/
+      .w1 {
+        padding: 6px 10px;
+        font-size: 14px;
+        cursor: pointer;
+        border-radius: 10px;
+        border: 2px solid black;
+        background-color: #06d9f5;
+      }
+      .w1:hover {
+        background: #ddd;
+        transform: scale(1.05);
+      }
+
+      .w1:active {
+        transform: scale(0.95);
+      }
+      /* ===== เมนูด้านข้าง ===== */
+      .side-menu a {
+        padding: 15px 30px;
+        text-decoration: none;
+        font-size: 20px;
+        color: rgb(13, 2, 2);
+        display: block;
+        transition: 0.3s;
+      }
+      .side-menu {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        top: 0;
+        right: 0;
+        background-color: #444;
+        overflow-x: hidden;
+        transition: width 0.4s ease;
+        padding-top: 60px;
+        z-index: 99999; /* 🔥 สูงสุด */
+        pointer-events: none; /* ปิดคลิกตอนพับ */
+      }
+
+      .side-menu.open {
+        width: 250px;
+        pointer-events: auto; /* เปิดคลิก */
+      }
+
+      .side-menu a:hover /* เมื่อชี้เมนู */ {
+        background-color: #575757;
+      }
+
+      .bar {
+        /* ปุ่มแถบเมนู */
+        width: 30px;
+        height: 4px;
+        background-color: #333;
+        margin: 6px 0;
+        transition: 0.4s;
+      }
+      .menu-toggle {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 100000; /* 🔥 สูงกว่า side-menu */
+        cursor: pointer;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: #ffffff;
+      }
+
+      .hmi-area {
+        display: flex;
+        gap: 80px;
+        align-items: flex-end; /* ฐาน module เสมอกัน */
+        justify-content: center;
+        margin-top: -30px;
+        margin-left: -80px;
+      }
+
+      .module {
+        position: relative;
+      }
+      .module-footer {
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .LFD2 {
+        position: absolute;
+        right: -20px;
+        bottom: -20px;
+      }
+      .top-bar {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        display: flex;
+        gap: 10px;
+        z-index: 90000;
+      }
+      .front-bar {
+        position: fixed;
+        left: 10px;
+        top: 120px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        z-index: 100000;
+      }
+
+      .END-bar {
+        position: fixed;
+        right: 10px;
+        top: 120px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        z-index: 100000;
+      }
+
+      
+
+      /* กล่องอุปกรณ์ */
+      .module {
+        position: relative;
+        top: 00px;
+        width: 140px;
+        background: #d9d9d9;
+        border: 2px solid #888;
+        padding: 6px;
+      }
+      .module-wrap {
+        position: relative; /* จุดอ้างอิง */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .arrow-box {
+        width: 60px;
+        height: 40px;
+        border: 2px solid red;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        margin-bottom: 8px;
+        background: #fff;
+      }
+      .tank-area {
+        margin-top: 60px;
+        display: flex;
+        justify-content: center;
+        gap: 80px;
+      }
+
+      /* ตัวเลขด้านบน */
+      .module-header {
+        text-align: center;
+        font-size: 12px;
+        background: #eee;
+        border: 1px solid #aaa;
+        margin-bottom: 6px;
+      }
+
+      /* พื้นที่สัญลักษณ์ */
+      .symbol {
+        height: 80px;
+        border: 2px solid #999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #e5e5e5;
+      }
+      .main-content {
+        margin-top: 140px; /* 🔥 เล็ก ๆ */
+        margin-left: 110px;
+        margin-right: 110px;
+      }
+
+      .w2:hover,
+      .w3:hover {
+        background: #ddd;
+        transform: scale(1.05);
+      }
+
+      .w2:active,
+      .w3:active {
+        transform: scale(0.95);
+      }
+
+      /* สัญลักษณ์ diode */
+      .diode {
+        width: 50px;
+        height: 50px;
+        border: 2px solid #666;
+        position: relative;
+      }
+      .diode-box {
+        position: relative; /* ⭐ สำคัญมาก */
+        width: 150px;
+        height: 100px;
+        border: 2px solid #000;
+        border-radius: 8px;
+        margin-bottom: 50px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #f2f2f2;
+
+        position: relative; /* ⭐ สำคัญ */
+      }
+
+      /* ตัวหนังสือบน diode */
+      .diode-label {
+        position: absolute;
+        top: -18px; /* ลอยเหนือกรอบ */
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 20px;
+        font-weight: bold;
+        background: #ffffff;
+        padding: 2px 6px;
+        border: 1px solid #333;
+        border-radius: 4px;
+        white-space: nowrap;
+        z-index: 5;
+      }
+
+      .diode::before {
+        content: "";
+        position: absolute;
+        left: 15px;
+        top: 1px;
+        width: 15px;
+        height: 15px;
+        border-left: 2px solid #666;
+        border-bottom: 2px solid #666;
+        transform: rotate(45deg);
+      }
+
+      /* ด้านล่าง */
+      .module-footer {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 80px;
+      }
+
+      /* สถานะ */
+      /* LFD ใน CELL */
+      .PDL {
+        width: 50px; /* กำหนดความกว้าง */
+        height: 50px; /* กำหนดความสูง */
+        display: flex; /* ใช้ flex */
+        align-items: center; /* กลางแนวตั้ง */
+        justify-content: center; /* กลางแนวนอน */
+        cursor: pointer;
+        font-size: 15px;
+        border: 1px solid #444;
+        text-align: center;
+        transition: 0.2s;
+        font-weight: bold;
+        border-radius: 50%;
+      }
+      .PDL:hover {
+        transform: scale(1.05);
+        background-color: #f6faf7;
+      }
+
+      .PDL:active {
+        transform: scale(0.95);
+      }
+
+      /* LFD ใน Cell */
+      .LFD1 {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 2px solid #020202;
+
+        display: flex;
+        align-items: center;
+        justify-content: center; /*ปรับเนื้อหาให้เหมาะสม*/
+
+        font-size: 12px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+      .lfd-group {
+        position: relative; /* จุดอ้างอิง */
+      }
+      .LFD1:hover {
+        transform: scale(1.05);
+        background-color: #ffffff;
+      }
+
+      .LFD1:active {
+        transform: scale(0.95);
+      }
+      /* LFD นอก CELL */
+      .LFD-OUT {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 2px solid #020202;
+
+        display: flex;
+        align-items: center;
+        justify-content: center; /*ปรับเนื้อหาให้เหมาะสม*/
+
+        font-size: 12px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+
+      .LFD-OUT:hover {
+        transform: scale(1.05);
+        background-color: #ffffff;
+      }
+
+      .LFD-OUT:active {
+        transform: scale(0.95);
+      }
+      /* 2LFD8 */
+      .LFD-FRONT {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 2px solid #020202;
+
+        display: flex;
+        align-items: center;
+        justify-content: center; /*ปรับเนื้อหาให้เหมาะสม*/
+
+        font-size: 12px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+
+      .LFD-FRONT:hover {
+        transform: scale(1.05);
+        background-color: #ffffff;
+      }
+
+      .LFD-FRONT:active {
+        transform: scale(0.95);
+      }
+
+      /*สี color*/
+      .pink {
+        background: #d980fa;
+      } /* สีชมพู */
+      .blue {
+        background: #45aaf2;
+        color: white;
+      }
+      .cyan {
+        background: #4cd3ff;
+      }
+      .red {
+        background: #ee5545;
+        color: rgb(0, 0, 0);
+      }
+      .yellow {
+        background: #f7b731;
+      }
+      .gray {
+        background: #b2bec3;
+      }
+      .green {
+        background: #10c33a;
+        color: rgb(0, 0, 0);
+      }
+      .black {
+        background-color: #000000;
+      }
+      @media (max-width: 900px) {
+        .front-bar,
+        .END-bar {
+          position: static; /* ❗ เอา fixed ออก */
+          flex-direction: row;
+          justify-content: center;
+          margin: 10px 0;
+        }
+      }
+
+      .page-center {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* กลางแนวนอนพอ */
+        gap: 40px;
+      }
+
+      .Tank1 {
+        position: relative; /* parent สำหรับ absolute children */
+        height: 100px;
+        width: 200px;
+        background: #83aae5;
+        border: 5px solid #525252;
+        padding: 6px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
+      /* กล่องแม่ */
+      .tank1-wrap {
+        width: 220px;
+        height: 280px;
+        border: 3px solid black;
+        border-radius: 0 0 20px 20px;
+        background: #b3d1f7;
+        position: relative;
+      }
+      /* ป้าย tank */
+      .tank-label {
+        text-align: center;
+        font-weight: bold;
+        padding-top: 8px;
+      }
+
+      /* Tank1 */
+      .Tank1 {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
+      /* Heater ด้านหน้า */
+      /* Heater */
+      .Tank1-front {
+        width: 60px;
+        height: 60px;
+        background-color: #ffcc00;
+        border: 1px solid black;
+        border-radius: 10px;
+        cursor: pointer;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .Tank1-front:hover {
+        transform: scale(1.05);
+        background-color: #ffffff;
+      }
+
+      /* Level */
+      .Tank1-right {
+        position: absolute;
+        top: 40px;
+        right: 10px;
+        width: 60px;
+        height: 60px;
+        background-color: #0800ff;
+        border: 1px solid rgb(16, 16, 16);
+        border-radius: 10px;
+        font-size: 20px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white; /* เพิ่มสีตัวหนังสือให้เห็นบนพื้นดำ */
+      }
+
+      /* Header */
+      .Tank1-header {
+        text-align: center;
+        font-size: 20px;
+        background: #0dcdef;
+        border: 1px solid #aaa;
+        margin-bottom: 78px;
+        font-family: bold;
+      }
+
+      .Tank2 {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
+      /* Heater */
+      /* Tank2 */
+      .Tank2 {
+        position: relative; /* parent สำหรับ absolute children */
+        height: 100px;
+        width: 200px;
+        background: #83aae5;
+        border: 5px solid #525252;
+        padding: 6px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
+      .Tank2-front:hover {
+        transform: scale(1.05);
+        background-color: #ffffff;
+      }
+      .Tank2-right:hover {
+        transform: scale(1.05);
+        background-color: #ffffff;
+      }
+
+      /* Heater ด้านหน้า */
+      /* ===== Heater ===== */
+      .Tank2-front {
+        position: absolute; /* ล็อกตำแหน่ง */
+        top: 40px;
+        left: 10px;
+        width: 60px;
+        height: 60px;
+        background-color: #ffcc00;
+        border: 1px solid black;
+        border-radius: 10px;
+
+        transition: 0.4s;
+
+        display: flex; /* ใช้ Flexbox */
+        align-items: center; /* แนวตั้งตรงกลาง */
+        justify-content: center; /* แนวนอนตรงกลาง */
+
+        font-size: 20px;
+      }
+      /* ===== Level===== */
+      .Tank2-right {
+        position: absolute;
+        top: 40px;
+        right: 10px;
+        width: 60px;
+        height: 60px;
+        background-color: #0800ff;
+        border: 1px solid rgb(16, 16, 16);
+        border-radius: 10px;
+        font-size: 20px;
+        cursor: pointer;
+        transition: 0.4s;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgb(255, 255, 255); /* เพิ่มสีตัวหนังสือให้เห็นบนพื้นดำ */
+      }
+
+      /* ===== Header ===== */
+      .Tank2-header {
+        text-align: center;
+        font-size: 20px;
+        background: #0dcdef;
+        border: 1px solid #aaa;
+        margin-bottom: 78px;
+        font-family: bold;
+      }
+
+      .cell {
+        width: 120px;
+        height: 60px;
+        border: 2px solid black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .diode-group {
+        display: flex;
+        gap: 15px;
+      }
+
+      .diode {
+        width: 40px;
+        height: 20px;
+        border: 2px solid black;
+        text-align: center;
+        font-weight: bold;
+      }
+
+      @media (max-width: 900px) {
+        .nav-left,
+        .nav-right,
+        .front-bar {
+          top: auto;
+          bottom: 20px;
+        }
+
+        .nav-left {
+          left: 10px;
+        }
+
+        .nav-right {
+          right: 10px;
+        }
+
+        .front-bar {
+          left: 50%;
+          transform: translateX(-50%);
+        }
+
+        .main-content {
+          margin-left: 10px;
+          margin-right: 10px;
+        }
+      }
+
+      /* ปุ่ม BACK */
+      .nav-left {
+        position: fixed;
+        left: 10px;
+        top: 220px;
+        z-index: 100000;
+      }
+
+      /* ปุ่ม SOON */
+      .nav-right {
+        position: fixed;
+        right: 10px;
+        top: 220px;
+        z-index: 100000;
+      }
+
+      /* ===== ปุ่มปั๊มบน Tank ===== */
+      .pump {
+        width: 55px;
+        height: 70px;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      /* ===== กลุ่มปั๊ม ===== */
+      .pump-group {
+        position: absolute;
+        top: -80px;
+        left: 60%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 50px;
+        z-index: 10;
+      }
+      /* svg */
+      .pump svg {
+        width: 50px;
+        height: 50px;
+      }
+      /* hover effect */
+      .pump:hover svg {
+        transform: scale(1.1);
+        transition: 0.5s;
+        background-color: #00ff22;
+        border-radius: 50%;
+        border: #00ff22 10px solid;
+      }
+
+      .pump-on-tank .pump-tag {
+        font-size: 13px;
+        font-weight: bold;
+      }
+      /* effect ปุ่ม */
+      .pump-on-tank:hover {
+        background: #b0d4ff;
+        transform: translateX(-50%) scale(1.1);
+      }
+      /* tag ใต้ปั๊ม */
+      .pump-tag {
+        font-size: 15px;
+        font-weight: bold;
+        margin-top: 2px;
+      }
+      /* ตัวอ้างอิง */
+      .btn-wrap {
+        position: relative;
+      }
+
+      /* กล่องข้อความ */
+      .specBox {
+        position: absolute;
+        bottom: 120%; /* ลอยขึ้นด้านบน */
+        left: 50%;
+        transform: translateX(-50%);
+        background: #ffffff;
+        border: 2px solid #000;
+        padding: 8px 10px;
+        font-size: 14px;
+        white-space: nowrap;
+        border-radius: 6px;
+        display: none;
+        z-index: 999;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      /* ลูกศรเล็กด้านล่าง */
+      .specBox::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border-width: 6px;
+        border-style: solid;
+        border-color: #ffffff transparent transparent transparent;
+      }
+
+      /* hover แล้วแสดง */
+      .btn-wrap:hover .specBox {
+        display: block;
+      }
+      .LFD-in {
+        position: absolute;
+        left: 50%;
+        transform: translateX(45%);
+      }
+      .LFD-OUT1 {
+        position: absolute;
+        right: -70px; /* ออกนอก module-wrap */
+        bottom: 7px;
+      }
+
+      /* กล่อง heater */
+      .HT1 {
+        position: absolute;
+        top: 35px;
+        left: 10px;
+      }
+      /* HL2 */
+      .HL2 {
+        position: absolute;
+        top: 0px;
+        right: 10px;
+      }
+      .module {
+        position: relative; /* ⭐ จำเป็น */
+      }
+      .module-wrap {
+        position: relative; /* ⭐ ตัวคุม LFD ทั้งหมด */
+      }
+      .LFD-OUT2 {
+        position: absolute;
+        right: 180px; /* ออกนอก module-wrap */
+        bottom: 7px; /* ระดับเดียวกับ LFD ใน cell */
+      }
+      /* ===== Modal ===== */
+      .modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4);
+        justify-content: center;
+        align-items: center;
+        z-index: 200000;
+      }
+
+      .modal.show {
+        display: flex;
+        pointer-events: auto;
+      }
+
+      .modal-content {
+        background: #fff;
+        padding: 16px;
+        width: 360px;
+        border-radius: 10px;
+      }
+
+      .modal-content.large {
+        width: 600px;
+        max-height: 80vh;
+        overflow-y: auto;
+      }
+
+      .modal input,
+      .modal textarea {
+        width: 100%;
+        margin-bottom: 8px;
+      }
+
+      .recent-box {
+        background: #f2f2f2;
+        padding: 8px;
+        margin-bottom: 10px;
+        max-height: 120px;
+        overflow-y: auto;
+      }
+
+      .history-row {
+        border-bottom: 1px solid #ccc;
+        padding: 4px 0;
+      }
+      #logNote {
+        resize: both; /* 🔥 ดึงได้ทั้งกว้าง + สูง (ทแยงได้) */
+        overflow: auto; /* 🔥 จำเป็นมาก ไม่งั้น resize จะไม่ทำงาน */
+      }
+      .pump-icon {
+        position: relative;
+        width: 50px;
+        height: 50px;
+      }
+
+      .pump-icon svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      .pump-img {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        width: 50px;
+        height: 50px;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+      }
+      .pump:hover .pump-img {
+        transform: translate(-50%, -50%) scale(1.1);
+        transition: 0.5s;
+      }
+      .icon {
+        width: 40px;
+        height: 40px;
+      }
+      .btn-text {
+        font-size: 14px;
+        font-weight: bold;
+      }
+      .w2 {
+        width: 90px;
+        height: 90px;
+        font-size: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        border: 2px solid black;
+        background-color: #06d9f5;
+        cursor: pointer;
+      }
+      .w3 {
+        width: 90px;
+        height: 90px;
+
+        display: flex;
+        flex-direction: column; /* ⭐ จัดบน-ล่าง */
+        align-items: center;
+        justify-content: center;
+
+        gap: 6px; /* ระยะรูปกับข้อความ */
+
+        border-radius: 12px;
+        border: 2px solid black;
+        background-color: #06d9f5;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="Name">Predip</div>
+    <div class="top-bar">
+      <button class="w1" onclick="window.location.href='Main.html'">
+        🏘️ All Machin
+      </button>
+      <button class="w1" onclick="window.location.href='MECO-02.html'">
+        🗽MECO-02
+      </button>
+      <button class="w1" onclick="window.location.href='MECO-04.html'">
+        🏭MECO-04
+      </button>
+      <button class="w1" onclick="window.location.href='STL-05.html'">
+        🏗️STL-05
+      </button>
+      <button class="w1" onclick="window.location.href='STL-07.html'">
+        🗼STL-07
+      </button>
+    </div>
+
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+
+    <div id="myMenu" class="side-menu">
+      <a href="Main.html">🏘️All machin </a>
+      <a href="MECO-02.html">🗽MECO-02</a>
+      <a href="MECO-04.html">🏭MECO-04</a>
+      <a href="STL-05.html">🏗️STL-05</a>
+      <a href="STL-07.html">🗼STL-07</a>
+    </div>
+    <!-- ปุ่มฝั่งซ้าย -->
+    <!-- ปุ่มฝั่งซ้าย -->
+    <!-- แถวควบคุม -->
+    <div class="nav-left">
+      <button class="w3" onclick="window.location.href='Activation.html'">
+       <img
+          src="back-button-circular-left-arrow-symbol_icon-icons.com_74326.png"
+          class="icon"
+        />
+        <span class="btn-text">BACK</span>
+      </button>
+    </div>
+
+    <div class="nav-right">
+      <button class="w3" onclick="window.location.href='Plating.html'">
+        <img src="next6_89384.png" class="icon" w3-wrap />
+        <span class="btn-text">NEXT</span>
+      </button>
+    </div>
+
+    <!-- ปุ่ม TOP แยก -->
+    <div class="front-bar">
+      <button class="w2" onclick="window.location.href='MECO-04.html'">
+        🏠
+      </button>
+    </div>
+
+    <div class="page-center main-content">
+      <div class="hmi-area">
+        <div class="cell-group"></div>
+        <div class="module-wrap gray">
+          <div class="diode-box">
+            <div class="diode-label">5R1</div>
+            <div class="diode yellow"></div>
+          </div>
+
+          <div class="module">
+            <div class="module-footer">
+              <div class="btn-wrap">
+                <button class="PDL green" onclick="openHistory('5PDL1')">
+                  5PDL1
+                </button>
+                <div class="specBox">
+                  Spec & History
+                  <br />
+                  Level 5-1
+                </div>
+              </div>
+              <div class="btn-wrap"></div>
+              <div class="btn-wrap">
+                <button class="LFD1 red" onclick="openHistory('5LFD1')">
+                  5LFD1
+                </button>
+                <div class="specBox">
+                  Spec & History<br />
+                  LFD 5-1
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="LFD-OUT2 btn-wrap">
+            <button class="LFD-FRONT gray" onclick="openHistory('5LFD2')">
+              5LFD2
+            </button>
+            <div class="specBox">
+              Spec & History<br />
+              LFD 5-2
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tank-area">
+        <div class="Tank2 gray">
+          <!-- ปั๊มบน Tank -->
+          <div class="pump-group">
+            <button class="pump btn-wrap" onclick="openHistory('5P2')">
+              <svg viewBox="0 0 100 100">
+                <circle
+                  cx="50"
+                  cy="50"
+                  r="45"
+                  fill="#ddd"
+                  stroke="black"
+                  stroke-width="4"
+                />
+              </svg>
+              <img src="Screenshot 2026-01-16 075433.png" class="pump-img" />
+              <div class="pump-tag">5P2</div>
+
+              <div class="specBox">
+                Spec & History
+                <br />
+                Pump 5P2
+              </div>
+            </button>
+          </div>
+
+          <button class="Tank2-header">Predip Cu</button>
+          <div class="HT1 btn-wrap">
+            <div class="specBox">
+              Spec & History
+              <br />
+              Heater 2H1
+            </div>
+          </div>
+        </div>
+
+        <div class="Tank1 gray">
+          <div class="Tank1-header">Predip A42</div>
+          <div class="pump-group">
+            <button class="pump btn-wrap" onclick="openHistory('5P1')">
+              <svg viewBox="0 0 100 100">
+                <circle
+                  cx="50"
+                  cy="50"
+                  r="45"
+                  fill="#ddd"
+                  stroke="black"
+                  stroke-width="4"
+                />
+              </svg>
+              <img src="Screenshot 2026-01-16 075433.png" class="pump-img" />
+
+              <div class="pump-tag">5P1</div>
+              <div class="specBox">
+                Spec & History
+                <br />
+                Pump 5P1
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== History Modal ===== -->
+    <div id="historyModal" class="modal">
+      <div
+        class="modal-content"
+        onmousedown="event.stopPropagation()"
+        onmouseup="event.stopPropagation()"
+        onclick="event.stopPropagation()"
+      >
+        <h3 id="modalTitle">Spec & History</h3>
+        <div
+          id="specDetail"
+          style="font-size: 14px; color: #555; margin-bottom: 8px"
+        ></div>
+
+        <div class="recent-box">
+          <b>Recent History</b>
+          <div id="recentHistory"></div>
+        </div>
+
+        <hr />
+
+        <label>Name</label>
+        <input type="text" id="logName" placeholder="Your name" />
+
+        <label>Remark</label>
+        <textarea
+          id="logNote"
+          onmousedown="event.stopPropagation()"
+          onmouseup="event.stopPropagation()"
+          placeholder="What was changed?"
+        ></textarea>
+
+        <div class="modal-actions">
+          <button onclick="saveLog()">💾 Save</button>
+          <button onclick="openFullHistory()">📁 Full History</button>
+          <button onclick="closeModal()">❌ Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Full History Modal ===== -->
+    <div id="fullHistoryModal" class="modal">
+      <div
+        class="modal-content large"
+        onmousedown="event.stopPropagation()"
+        onmouseup="event.stopPropagation()"
+        onclick="event.stopPropagation()"
+      >
+        <h3 id="fullTitle"></h3>
+        <div id="fullHistoryList"></div>
+        <button onclick="deleteLast()">↩ Delete Last</button>
+        <button onclick="adminClearHistory()">🚮 Clear History</button>
+        <button onclick="closeFullHistory()">❌ Close</button>
+      </div>
+    </div>
+    <script>
+      function toggleMenu() {
+        document.getElementById("myMenu").classList.toggle("open");
+      }
+    </script>
+
+    <script>
+      const PART_CONFIG = {
+        // Spec LFD
+        "2LFD0": { title: "Spec&History", spec: "" },
+        "5LFD1": { title: "Sensor Log", spec: "" },
+        "5LFD2": { title: "Sensor Log", spec: "" },
+        "5LFD3": { title: "Sensor Log", spec: "Leak Flow Detector #3" },
+        "2LFD4": { title: "Sensor Log", spec: "Leak Flow Detector #4" },
+        "2LFD5": { title: "Sensor Log", spec: "Leak Flow Detector #5" },
+        "2LFD6": { title: "Sensor Log", spec: "Leak Flow Detector #6" },
+        "2LFD7": { title: "Sensor Log", spec: "Leak Flow Detector #7" },
+        "2LFD8": { title: "Sensor Log", spec: "Leak Flow Detector #8" },
+        // SpecPDL
+        "2PDL1": { title: "Level Sensor Log", spec: "PDL Level 2-1" },
+        "2PDL2": { title: "Level Sensor Log", spec: "PDL Level 2-2" },
+        "2PDL3": { title: "Level Sensor Log", spec: "PDL Level 2-3" },
+        "2PDL4": { title: "Level Sensor Log", spec: "PDL Level 2-4" },
+        // Spec Pump
+        "2P1": {
+          title: "Pump History",
+          spec: "Spec: 1.1kW/  Model:D18-23-400-PP/(RPM:2900rpm.)",
+        },
+        "2P2": {
+          title: "Pump History",
+          spec: "Spec: 1.1kW/  Model:D18-23-400-PP/(RPM:2900rpm.)",
+        },
+        "5P2": {
+          title: "Pump History",
+          spec: "Spec: 0.37kW/  Model:D13-08-300-PP/(RPM:2855rpm.)",
+        },
+        "5P1": {
+          title: "Pump History",
+          spec: "Spec: 0.37kW/  Model:D13-08-300-PP/(RPM:2855rpm.)",
+        },
+        "2HL1": { title: "Level ", spec: "" },
+        // Spec Heater
+        "2H1": {
+          title: "Heater",
+          spec: "Spec&History Model:3HXOL9310.5-22-R18-P2-1000/9 kW",
+        },
+        "2H2": {
+          title: "Heater",
+          spec: "Spec: 9 kW/ Model:3HXOL9310.5-22-R18-P2-1000",
+        },
+      };
+      function resetNoteSize() {
+        const note = document.getElementById("logNote");
+        note.style.width = "";
+        note.style.height = "";
+        note.value = ""; // ⭐ ล้างข้อความ
+      }
+
+      const ADMIN_CODE = "admin"; // ← เปลี่ยนรหัสตรงนี้
+      let currentPart = "";
+
+      function openHistory(partName) {
+        currentPart = partName;
+        console.log("OPEN :", partName);
+
+        const cfg = PART_CONFIG[partName] || {
+          title: "Spec & History",
+          spec: "",
+        };
+
+        document.getElementById("modalTitle").innerText =
+          cfg.title + " : " + partName;
+
+        document.getElementById("specDetail").innerText = cfg.spec;
+
+        loadHistory();
+
+        document.getElementById("historyModal").classList.add("show");
+      }
+
+      function closeModal() {
+        document.getElementById("historyModal").classList.remove("show");
+        resetNoteSize();
+      }
+      function closeFullHistory() {
+        document.getElementById("fullHistoryModal").classList.remove("show");
+      }
+
+      // ⭐ รีเซทขนาดทุกครั้งที่ปิด
+
+      function saveLog() {
+        const nameInput = document.getElementById("logName");
+        const noteInput = document.getElementById("logNote");
+
+        const name = nameInput.value.trim();
+        const note = noteInput.value.trim();
+
+        if (!name) {
+          alert("Please enter name");
+          return;
+        }
+
+        if (!note) {
+          alert("Please enter remark");
+          return;
+        }
+
+        const now = new Date();
+
+        const log = {
+          id: Date.now(),
+          name,
+          note,
+          date: now.toLocaleDateString(),
+          time: now.toLocaleTimeString(),
+        };
+
+        const key = "log_" + currentPart;
+        const logs = JSON.parse(localStorage.getItem(key) || "[]");
+        logs.push(log);
+        localStorage.setItem(key, JSON.stringify(logs));
+
+        // ✅ ล้างค่าหลัง save
+        nameInput.value = "";
+        noteInput.value = "";
+
+        // รีเฟรช history
+        openHistory(currentPart);
+      }
+
+      function openFullHistory() {
+        document.getElementById("fullTitle").innerText =
+          "Full History : " + currentPart;
+
+        const logs = JSON.parse(
+          localStorage.getItem("log_" + currentPart) || "[]"
+        );
+
+        const box = document.getElementById("fullHistoryList");
+        box.innerHTML = "";
+
+        logs
+          .slice()
+          .reverse()
+          .forEach((l, i) => {
+            box.innerHTML += `
+        <div class="history-row">
+          ${logs.length - i}.
+          <b>${l.date}</b> ${l.time} |
+          ${l.name}<br/>
+          ${l.note || "-"}
+          <br/>
+          <button onclick="deleteOne(${l.id})">🗑 Delete</button>
+        </div>`;
+          });
+
+        // 🔥 ปิด modal แรก
+        document.getElementById("historyModal").classList.remove("show");
+
+        // 🔥 เปิด Full History (สำคัญที่สุด)
+        document.getElementById("fullHistoryModal").classList.add("show");
+      }
+
+      function adminClearHistory() {
+        const code = prompt("Enter Admin Code");
+
+        if (code !== ADMIN_CODE) {
+          alert("❌ You have no permission");
+          return;
+        }
+
+        if (!confirm("Are you sure to clear all history?")) return;
+
+        localStorage.removeItem("log_" + currentPart);
+
+        alert("✅ History cleared");
+        openFullHistory();
+      }
+      function deleteOne(id) {
+        const code = prompt("Enter Admin Code");
+        if (code !== ADMIN_CODE) {
+          alert("❌ You have no permission");
+          return;
+        }
+
+        if (!confirm("Delete this record?")) return;
+
+        const key = "log_" + currentPart;
+        let logs = JSON.parse(localStorage.getItem(key) || "[]");
+
+        logs = logs.filter((l) => l.id !== id);
+
+        localStorage.setItem(key, JSON.stringify(logs));
+        openFullHistory();
+      }
+      function deleteLast() {
+        const code = prompt("Enter Admin Code");
+        if (code !== ADMIN_CODE) {
+          alert("❌ You have no permission");
+          return;
+        }
+
+        const key = "log_" + currentPart;
+        let logs = JSON.parse(localStorage.getItem(key) || "[]");
+
+        if (logs.length === 0) {
+          alert("No history");
+          return;
+        }
+
+        if (!confirm("Delete LAST record?")) return;
+
+        logs.pop(); // ⭐ ลบอันล่าสุด
+        localStorage.setItem(key, JSON.stringify(logs));
+        openFullHistory();
+      }
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          const history = document.getElementById("historyModal");
+          const full = document.getElementById("fullHistoryModal");
+
+          if (full.classList.contains("show")) {
+            closeFullHistory();
+          } else if (history.classList.contains("show")) {
+            closeModal();
+          }
+        }
+      });
+
+      document.getElementById("historyModal").onclick = function (e) {
+        if (e.target === this) closeModal();
+      };
+
+      document.getElementById("fullHistoryModal").onclick = function (e) {
+        if (e.target === this) closeFullHistory();
+      };
+      function loadHistory() {
+        const box = document.getElementById("recentHistory");
+        const key = "log_" + currentPart;
+        const logs = JSON.parse(localStorage.getItem(key) || "[]");
+
+        box.innerHTML = "";
+
+        logs
+          .slice(-3)
+          .reverse()
+          .forEach((l) => {
+            box.innerHTML += `
+        <div class="history-row">
+          <b>${l.date}</b> ${l.time}<br/>
+          ${l.name} : ${l.note || "-"}
+        </div>
+      `;
+          });
+      }
+    </script>
+  </body>
+</html>

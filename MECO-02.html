@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>MECO-04</title>
+
+<style>    
+    /* ===== เมนูด้านข้าง ===== */
+.side-menu a {
+     padding: 15px 30px;
+     text-decoration: none;
+     font-size: 20px;
+     color: rgb(13, 2, 2);
+     display: block;
+     transition: 0.3s;
+}
+.side-menu {/* กรอบเมนูด้านข้าง */
+            height: 100%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            right: 0;
+            background-color: #444;
+            overflow-x: hidden;
+            transition: 0.4s;
+            padding-top: 60px;
+        }
+.side-menu a:hover /* เมื่อชี้เมนู */
+{
+            background-color: #575757;
+        }
+.bar {/* ปุ่มแถบเมนู */
+            width: 30px;
+            height: 4px;
+            background-color: #333;
+            margin: 6px 0;
+            transition: 0.4s;
+        }
+.menu-toggle {/* ปุ่มแถบเมนู */
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            cursor: pointer;
+        }
+
+ body {/* พื้นฐานตัวหนังสือ */
+            margin: 0;
+            font-family: "inter ", "noto sans thai", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        
+        }
+
+        /* ===== พื้นฐาน ===== */
+body {
+  font-family: Arial, sans-serif;
+  background: #fff;
+}
+
+/* ===== หัวข้อ ===== */
+.title {
+  font-size: 36px;
+  font-weight: bold;
+  margin: 20px;
+}
+
+/* ===== กรอบใหญ่ ===== */
+.layout {
+  position: relative;
+  width: 1700px;
+  height: 520px;
+  border: 3px solid rgb(0, 0, 0);
+  margin: auto;
+}
+
+
+
+/* ===== Turn wheel ===== */
+.turnwheelbig {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: #e9f455;
+  border: 10px solid rgb(255, 196, 0);
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.turnwheelbig:hover {
+  transform: scale(1.05);
+}
+
+/* ===== Turn wheel เล็ก ===== */
+.turnwheelsmall {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: #e9f455;
+  border: 5px solid rgb(255, 196, 0);
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.turnwheelsmall:hover {
+  transform: scale(1.05);
+}
+
+/* ===== Turn wheel กลาง ===== */
+.turnwheelcenter {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: #e9f455;
+  border: 5px solid rgb(255, 196, 0);
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.turnwheelcenter:hover {
+  transform: scale(1.05);
+}
+
+/* ===== Fresh===== */
+.Fresh {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #5ec9ff;
+  border: 2px solid black;
+  font-size: 25px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* จัดข้อความกลางวง */
+.turnwheelbig span,
+.turnwheelsmall span,
+.turnwheelcenter span {
+  position: absolute;/* จัดข้อความกึ่งกลาง */
+  top: 50%;/* กึ่งกลางแนวตั้ง */
+  left: 50%;/* กึ่งกลางแนวนอน */
+  transform: translate(-50%, -50%);/* เลื่อนข้อความกลับมาครึ่งนึง */
+  pointer-events: none;/* ป้องกันไม่ให้ข้อความขวางการคลิกปุ่ม */
+}
+
+/* ===== ปุ่ม process ===== */
+.btn {
+  position: absolute;/* จัดตำแหน่งปุ่ม */
+  border: 1.5px solid black;/* ขอบปุ่ม */
+  border-radius: 10px;/* มุมปุ่มโค้ง */
+  transition: transform 0.2s;/* เอฟเฟกต์ขยายปุ่ม */
+  font-size: 12px; /* ขนาดตัวอักษร */
+  padding: 4px 6px; /* ระยะห่างข้อความ */
+  cursor: pointer;  /* เปลี่ยนเคอร์เซอร์เมื่อชี้ */
+  text-align: center;/* จัดข้อความกึ่งกลาง */
+  background: #eee; /* สีพื้นฐานปุ่ม */
+}
+
+.btn:hover {
+  transform: scale(1.05);/* ขยายปุ่มเมื่อชี้เมาส์ */
+}
+
+/* ===== สี ===== */
+.pink { background: #d980fa; }/* สีชมพู */
+.blue { background: #45aaf2; color: white; }
+.cyan { background: #4cd3ff; }
+.red { background: #e74c3c; color: white; }
+.yellow { background: #f7b731; }
+.gray { background: #b2bec3; }
+.green { background: #20bf6b; color: white; }
+
+
+/* ===== แถว ===== */
+.top { top: 80px; height: 34px; }/* ปุ่มแถวบน */
+.cell { top: 120px; height: 22px; } /* ปุ่มใต้ Plating */
+.bottom { top: 400px; height: 34px; } /* ปุ่มแถวล่าง */
+.centerupper { top: 190px; height: 34px; } /* ปุ่มแถวกลางบน */
+.centerlower { top: 230px; height: 28px; } /* ปุ่มใต้แถวกลางบน */
+.lowercenter { top: 340px; height: 22px; } /* ปุ่มแถวกลางล่าง */
+.uppercenter { top: 300px; height: 34px; } /* ปุ่มเหนือแถวกลางล่าง */ 
+.lowercell { top: 440px; height: 22px; } /* ปุ่มใต้ Deflash */
+/* ===== ขนาด ===== */
+.w45 { width: 45px;height: 22px; }/* ปุ่มกว้าง 50px */
+.w60 { width: 60px; }/* ปุ่มกว้าง 60px */
+.w80 { width: 80px; height: 60px; }/* ปุ่มกว้าง 80px */
+.w90 { width: 90px; height: 34px; }/* ปุ่มกว้าง 90px */
+.w100 { width: 100px; }/* ปุ่มกว้าง 100px */
+.w120 { width: 120px; }/* ปุ่มกว้าง 120px */
+.w145 { width: 145px;height: 34; }/* ปุ่มกว้าง 150px */
+.w205 { width: 205px; }/* ปุ่มกว้าง 205px */
+.w210 { width: 210px; height: 60px; }/* ปุ่มกว้าง 120px */
+.w260 { width: 260px; }/* ปุ่มกว้าง 250px */
+.w320 { width: 320px; }/* ปุ่มกว้าง 320px */
+.w300 { width: 300px; }/* ปุ่มกว้าง 300px */
+.w310 { width: 310px; height: 60px; }/* ปุ่มกว้าง 310px */
+
+
+</style>
+
+</head> 
+<body>
+<div class="menu-toggle" onclick="toggleMenu()">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+
+<div id="myMenu" class="side-menu">
+        <a href="Main.html">🏠 Home</a>
+        <a href="MECO-04.html">MECO-04</a>
+        <a href="STL-05.html">STL-05</a>
+        <a href="STL-07.html">STL-07</a>
+        
+</div>
+    <div class="title" style="text-align: center;font: 3em sans-serif;">MECO-02</div>
+    <div class="layout">
+
+    
+    <!-- ===== Turn wheel ซ้าย ===== -->
+<button class="turnwheelbig" style="left:30px; top:110px;">
+  <span>Turn<br>Wheel</span>
+</button>
+
+<!-- ===== แถวบน ===== -->
+<button class="btn pink top w80" style="left: 300px;">5-1<br>Predip</button>
+<button class="btn pink top w320" style="left:390px;">Plating</button>
+<button class="btn cyan top w80" style="left:720px;">6-6/7/8<br>DWR Fresh</button>
+<button class="btn pink top w80" style="left: 810px;">7-1<br>Neutralizer</button>
+<button class="btn blue top w80" style="left: 900px;">7-2<br>DWR</button>
+<button class="btn blue top w80" style="left: 990px;">7-3<br>Hot DWR</button>
+<button class="btn cyan top w80" style="left: 1080px;">7-3 <br>DWR</button>
+<button class="btn yellow top w80" style="left: 1170px;">8-1/2/3<br>Blow-off</button>
+<button class="btn red top w80" style="left:1260px;">9-1<br>Dryer</button>
+<button class="btn gray top w80" style="left:1350px;">Un-load</button>
+<!-- ===== Turn wheel ขวาบน ===== -->
+<button class="turnwheelsmall" style="left: 1450px; top:100px;">
+  <span>Turn<br>wheel</span>
+</button>
+
+<!-- ===== Cell ใต้ Plating ===== -->
+<button class="btn pink cell w60" style="left:390px;">Cell 6-1</button>
+<button class="btn pink cell w60" style="left: 455px;">Cell 6-2</button>
+<button class="btn pink cell w60" style="left:520px;">Cell 6-3</button>
+<button class="btn pink cell w60" style="left:585px;">Cell 6-4</button>
+<button class="btn pink cell w60" style="left: 650px;">Cell 6-5</button>
+<!-- ===== แถวล่าง ===== -->
+<button class="btn blue bottom w80" style="left:300px;">4-2<br>CWR Fresh</button>
+<button class="btn pink bottom w80" style="left:390px;">4-1<br>Activation</button>
+<button class="btn blue bottom w80" style="left:480px;">3-2<br>CWR Fresh</button>
+<button class="btn blue bottom w80" style="left:570px;">3-1<br>Electro Clean</button>
+<button class="btn cyan bottom w90" style="left:660px;">2-6<br>HP</button>
+<button class="btn blue bottom w80" style="left:760px;">2-5<br>DOR</button>
+
+<button class="btn green bottom w260" style="left:850px;">Electro DEFLASH</button>
+<button class="btn gray bottom w310" style="left:1125px;">In-load</button>
+<!-- ===== Cell ใต้ Deflash ===== -->
+<button class="btn green lowercell w60" style="left:850px;">Cell 2-4</button>
+<button class="btn green lowercell w60" style="left:915px;">Cell 2-3</button>
+<button class="btn green lowercell w60" style="left:980px;">Cell 2-2</button>
+<button class="btn green lowercell w60" style="left:1045px;">Cell 2-1</button>
+<!-- แถวกลางบน -->
+ <button class="btn blue centerupper w80" style="left: 780px; top:190px;">11-3<br>DOR</button>
+    <button class="btn pink centerupper w300" style="left:870px; top:190px;">Belt Stripper</button>
+    <!-- ===== Cell ใต้แถวกลางบน ===== -->
+    <button class="btn pink centerlower w145" style="left:870px;">Cell 11-1</button>
+    <button class="btn pink centerlower w145" style="left:1025px;">Cell 11-2</button>
+
+    <!-- ===== Cell กลางล่าง ===== -->
+     <button class="btn pink uppercenter w205" style="left: 780px;">Belt Stripper</button>
+      <button class="btn blue uppercenter w80" style="left: 990px;">11-6<br>DOR</button>
+      <button class="btn green uppercenter w80" style="left: 1080px;">11-7<br>CWR Fresh</button>
+      <button class="btn yellow uppercenter w80" style="left: 1170px;">12-1/2<br>Blower</button>
+      <button class="btn red uppercenter w80" style="left: 1260px;">13-1<br>Dryer</button>
+    <!-- ===== Cell แถวกลางล่าง ===== -->
+      <button class="btn pink lowercenter w100" style="left:780px;">Cell 11-4</button>
+      <button class="btn pink lowercenter w100" style="left:885px;">Cell 11-5</button>
+
+    <!--Turn wheel กลาง-->
+<button class="turnwheelcenter" style="left:620px; top:220px;">
+  <span>Turn<br>Wheel</span>
+</button>
+<!-- ===== Turn wheel ขวาล่าง ===== -->
+<button class="turnwheelsmall" style="left:1450px; top:330px;">
+  <span>Turn<br>Wheel</span>
+  
+</button>
+<!--ใต้ cell 2-6 HP-->
+<button class="btn cyan bottom w45" style="left:660px; top:440px;">HP</button>
+<button class="btn cyan bottom w45" style="left:706px; top:440px;">CWR</button>
+<!-- ===== Fresh ===== -->
+<button class="Fresh red" style="left:160px; top:360px;">1</button>
+<button class="Fresh red" style="left:50px; top:250px;">2</button>
+<button class="Fresh red" style="left:160px; top:140px;">3</button>
+
+
+</div>
+
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById("myMenu");
+            if (menu.style.width === "250px") {
+                menu.style.width = "0";
+            } else {
+                menu.style.width = "250px";
+            }
+        }
+    </script>
