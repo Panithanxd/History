@@ -1,11 +1,26 @@
 <!doctype html>
-<html lang="th">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Main</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <link rel="icon" href="boy1.png" />
+    <link rel="shortcut icon" href="boy1.png" />
+
+    <title>Tank-Deflash-1</title>
+    <meta name="description" content="Tank Deflash 1 HMI Monitor" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
 
     <style>
+      body {
+        padding-top: 50px; /* กัน top-bar */
+      }
+
       .Name {
         width: fit-content;
         font-size: 36px;
@@ -20,15 +35,15 @@
 
       /*กรอบ icon*/
       .w1 {
-        padding: 20px 20px;
-        font-size: 20px;
+        padding: 6px 10px;
+        font-size: 14px;
         cursor: pointer;
         border-radius: 10px;
         border: 2px solid black;
-        background-color: #a8a7a7;
+        background-color: #61ff39;
       }
       .w1:hover {
-        background: #00f028;
+        background: #ddd;
         transform: scale(1.05);
       }
 
@@ -166,7 +181,7 @@
         background: #fff;
       }
       .tank-area {
-        margin-top: 40px;
+        margin-top: 250px;
         display: flex;
         justify-content: center;
         gap: 80px;
@@ -416,7 +431,7 @@
       .Tank1 {
         position: relative; /* parent สำหรับ absolute children */
         height: 100px;
-        width: 370px;
+        width: 200px;
         background: #83aae5;
         border: 5px solid #525252;
         padding: 6px;
@@ -507,7 +522,7 @@
       .Tank2 {
         position: relative; /* parent สำหรับ absolute children */
         height: 100px;
-        width: 370px;
+        width: 200px;
         background: #83aae5;
         border: 5px solid #525252;
         padding: 6px;
@@ -847,7 +862,7 @@
       .w2 {
         width: 90px;
         height: 90px;
-        font-size: 15px;
+        font-size: 42px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -876,6 +891,25 @@
   </head>
 
   <body>
+    <div class="Name">D.W.R.</div>
+    <div class="top-bar">
+      <button class="w1" onclick="window.location.href = 'Main.html'">
+        🏘️ All Machin
+      </button>
+      <button class="w1" onclick="window.location.href = 'MECO-02.html'">
+        🗽MECO-02
+      </button>
+      <button class="w1" onclick="window.location.href = 'MECO-04.html'">
+        🏭MECO-04
+      </button>
+      <button class="w1" onclick="window.location.href = 'STL-05.html'">
+        🏗️STL-05
+      </button>
+      <button class="w1" onclick="window.location.href = 'STL-07.html'">
+        🗼STL-07
+      </button>
+    </div>
+
     <div class="menu-toggle" onclick="toggleMenu()">
       <div class="bar"></div>
       <div class="bar"></div>
@@ -889,44 +923,421 @@
       <a href="STL-05.html">🏗️STL-05</a>
       <a href="STL-07.html">🗼STL-07</a>
     </div>
+    <!-- ปุ่มฝั่งซ้าย -->
+    <!-- ปุ่มฝั่งซ้าย -->
+    <!-- แถวควบคุม -->
+    <div class="nav-left">
+      <button class="w3" onclick="window.location.href = '02Plating.html'">
+        <img
+          src="back-button-circular-left-arrow-symbol_icon-icons.com_74326.png"
+          class="icon"
+        />
+        <span class="btn-text">BACK</span>
+      </button>
+    </div>
 
-    <section style="padding: 20px; text-align: center">
-      <a
-        style="
-          font-size: 5em;
-          font-family:
-            Impact, Haettenschweiler, &quot;Arial Narrow Bold&quot;, sans-serif;
-          color: rgb(0, 0, 0);
-        "
-        >🏘️All machin</a
+    <div class="nav-right">
+      <button class="w3" onclick="window.location.href = '02Neutralizer.html'">
+        <img src="next6_89384.png" class="icon" />
+        <span class="btn-text">NEXT</span>
+      </button>
+    </div>
+
+    <!-- ปุ่ม TOP แยก -->
+    <div class="front-bar">
+      <button class="w2" onclick="window.location.href = 'MECO-02.html'">
+        🏠
+      </button>
+    </div>
+
+    <div class="tank-area">
+      <div class="Tank2 gray">
+        <!-- ปั๊มบน Tank -->
+        <div class="pump-group">
+          <button class="pump btn-wrap" onclick="openHistory('6P8')">
+            <svg viewBox="0 0 100 100">
+              <circle
+                cx="50"
+                cy="50"
+                r="45"
+                fill="#ddd"
+                stroke="black"
+                stroke-width="4"
+              />
+            </svg>
+            <img src="Screenshot 2026-01-16 075433.png" class="pump-img" />
+            <div class="pump-tag">6P8</div>
+
+            <div class="specBox">
+              Spec & History
+              <br />
+              Pump 6P8
+            </div>
+          </button>
+        </div>
+
+        <button class="Tank2-header">D.W.R.(6-8)</button>
+      </div>
+
+      <div class="Tank1 gray">
+        <div class="Tank1-header">D.O.R(6-7)</div>
+        <div class="pump-group">
+          <button class="pump btn-wrap" onclick="openHistory('6P7')">
+            <svg viewBox="0 0 100 100">
+              <circle
+                cx="50"
+                cy="50"
+                r="45"
+                fill="#ddd"
+                stroke="black"
+                stroke-width="4"
+              />
+            </svg>
+            <img src="Screenshot 2026-01-16 075433.png" class="pump-img" />
+            <div class="pump-tag">6P7</div>
+            <div class="specBox">
+              Spec & History
+              <br />
+              Pump 6P7
+            </div>
+          </button>
+        </div>
+      </div>
+      <div class="Tank1 gray">
+        <div class="Tank1-header">D.O.R.(6-6)</div>
+        <div class="pump-group">
+          <button class="pump btn-wrap" onclick="openHistory('6P6')">
+            <svg viewBox="0 0 100 100">
+              <circle
+                cx="50"
+                cy="50"
+                r="45"
+                fill="#ddd"
+                stroke="black"
+                stroke-width="4"
+              />
+            </svg>
+            <img src="Screenshot 2026-01-16 075433.png" class="pump-img" />
+            <div class="pump-tag">6P6</div>
+            <div class="specBox">
+              Spec & History
+              <br />
+              Pump 6P6
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== History Modal ===== -->
+    <div id="historyModal" class="modal">
+      <div
+        class="modal-content"
+        onmousedown="event.stopPropagation()"
+        onmouseup="event.stopPropagation()"
+        onclick="event.stopPropagation()"
       >
-    </section>
+        <h3 id="modalTitle">Spec & History</h3>
+        <div
+          id="specDetail"
+          style="font-size: 14px; color: #555; margin-bottom: 8px"
+        ></div>
 
-    <button class="w1" onclick="window.location.href = 'MECO-02.html'">
-      🗽MECO-02
-    </button>
-    <button class="w1" onclick="window.location.href = 'MECO-04.html'">
-      🏭MECO-04
-    </button>
-    <button class="w1" onclick="window.location.href = 'STL-05.html'">
-      🏗️STL-05
-    </button>
-    <button class="w1" onclick.window.location.href="STL-07.html">
-      🗼STL-07
-    </button>
-    <script>
-      function toggleMenu() {
-        const menu = document.getElementById("myMenu");
-        if (menu.style.width === "250px") {
-          menu.style.width = "0";
-        } else {
-          menu.style.width = "250px";
-        }
-      }
-    </script>
+        <div class="recent-box">
+          <b>Recent History</b>
+          <div id="recentHistory"></div>
+        </div>
+
+        <hr />
+
+        <label>Name</label>
+        <input type="text" id="logName" placeholder="Your name" />
+
+        <label>Remark</label>
+        <textarea
+          id="logNote"
+          onmousedown="event.stopPropagation()"
+          onmouseup="event.stopPropagation()"
+          placeholder="What was changed?"
+        ></textarea>
+
+        <div class="modal-actions">
+          <button onclick="saveLog()">💾 Save</button>
+          <button onclick="openFullHistory()">📁 Full History</button>
+          <button onclick="closeModal()">❌ Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Full History Modal ===== -->
+    <div id="fullHistoryModal" class="modal">
+      <div
+        class="modal-content large"
+        onmousedown="event.stopPropagation()"
+        onmouseup="event.stopPropagation()"
+        onclick="event.stopPropagation()"
+      >
+        <h3 id="fullTitle"></h3>
+        <div id="fullHistoryList"></div>
+        <button onclick="deleteLast()">↩ Delete Last</button>
+        <button onclick="adminClearHistory()">🚮 Clear History</button>
+        <button onclick="closeFullHistory()">❌ Close</button>
+      </div>
+    </div>
     <script>
       function toggleMenu() {
         document.getElementById("myMenu").classList.toggle("open");
+      }
+    </script>
+
+    <script>
+      const PART_CONFIG = {
+        // Spec LFD
+        "2LFD0": { title: "Spec&History", spec: "" },
+        "2LFD1": { title: "Sensor Log", spec: "Leak Flow Detector #1" },
+        "2LFD2": { title: "Sensor Log", spec: "Leak Flow Detector #2" },
+        "2LFD3": { title: "Sensor Log", spec: "Leak Flow Detector #3" },
+        "2LFD4": { title: "Sensor Log", spec: "Leak Flow Detector #4" },
+        "2LFD5": { title: "Sensor Log", spec: "Leak Flow Detector #5" },
+        "2LFD6": { title: "Sensor Log", spec: "Leak Flow Detector #6" },
+        "2LFD7": { title: "Sensor Log", spec: "Leak Flow Detector #7" },
+        "2LFD8": { title: "Sensor Log", spec: "Leak Flow Detector #8" },
+        // SpecPDL
+        "2PDL1": { title: "Level Sensor Log", spec: "PDL Level 2-1" },
+        "2PDL2": { title: "Level Sensor Log", spec: "PDL Level 2-2" },
+        "2PDL3": { title: "Level Sensor Log", spec: "PDL Level 2-3" },
+        "2PDL4": { title: "Level Sensor Log", spec: "PDL Level 2-4" },
+        // Spec Pump
+        "6P6": {
+          title: "Pump History",
+          spec: "Spec: 0.18kW/  Model:D13-08-300-PP/(RPM:2880rpm.)",
+        },
+        "6P7": {
+          title: "Pump History",
+          spec: "Spec: 0.18kW/  Model:D13-08-300-PP/(RPM:2880rpm.)",
+        },
+        "6P8": {
+          title: "Pump History",
+          spec: "Spec: 0.18kW/  Model:D13-08-300-PP/(RPM:2880rpm.)",
+        },
+        "2P7": {
+          title: "Pump History",
+          spec: "Spec: 0.18kW/  Model:D13-08-300-PP/(RPM:2880rpm.)",
+        },
+        "2HL1": { title: "Level ", spec: "" },
+        // Spec Heater
+        "2H1": {
+          title: "Heater",
+          spec: "Spec&History Model:3HXOL9310.5-22-R18-P2-1000/9 kW",
+        },
+        "2H2": {
+          title: "Heater",
+          spec: "Spec: 9 kW/ Model:3HXOL9310.5-22-R18-P2-1000",
+        },
+      };
+      function resetNoteSize() {
+        const note = document.getElementById("logNote");
+        note.style.width = "";
+        note.style.height = "";
+        note.value = ""; // ⭐ ล้างข้อความ
+      }
+
+      const ADMIN_CODE = "admin"; // ← เปลี่ยนรหัสตรงนี้
+      let currentPart = "";
+
+      function openHistory(partName) {
+        currentPart = partName;
+        console.log("OPEN :", partName);
+
+        const cfg = PART_CONFIG[partName] || {
+          title: "Spec & History",
+          spec: "",
+        };
+
+        document.getElementById("modalTitle").innerText =
+          cfg.title + " : " + partName;
+
+        document.getElementById("specDetail").innerText = cfg.spec;
+
+        loadHistory();
+
+        document.getElementById("historyModal").classList.add("show");
+      }
+
+      function closeModal() {
+        document.getElementById("historyModal").classList.remove("show");
+        resetNoteSize();
+      }
+      function closeFullHistory() {
+        document.getElementById("fullHistoryModal").classList.remove("show");
+      }
+
+      // ⭐ รีเซทขนาดทุกครั้งที่ปิด
+
+      function saveLog() {
+        const nameInput = document.getElementById("logName");
+        const noteInput = document.getElementById("logNote");
+
+        const name = nameInput.value.trim();
+        const note = noteInput.value.trim();
+
+        if (!name) {
+          alert("Please enter name");
+          return;
+        }
+
+        if (!note) {
+          alert("Please enter remark");
+          return;
+        }
+
+        const now = new Date();
+
+        const log = {
+          id: Date.now(),
+          name,
+          note,
+          date: now.toLocaleDateString(),
+          time: now.toLocaleTimeString(),
+        };
+
+        const key = "log_" + currentPart;
+        const logs = JSON.parse(localStorage.getItem(key) || "[]");
+        logs.push(log);
+        localStorage.setItem(key, JSON.stringify(logs));
+
+        // ✅ ล้างค่าหลัง save
+        nameInput.value = "";
+        noteInput.value = "";
+
+        // รีเฟรช history
+        openHistory(currentPart);
+      }
+
+      function openFullHistory() {
+        document.getElementById("fullTitle").innerText =
+          "Full History : " + currentPart;
+
+        const logs = JSON.parse(
+          localStorage.getItem("log_" + currentPart) || "[]",
+        );
+
+        const box = document.getElementById("fullHistoryList");
+        box.innerHTML = "";
+
+        logs
+          .slice()
+          .reverse()
+          .forEach((l, i) => {
+            box.innerHTML += `
+        <div class="history-row">
+          ${logs.length - i}.
+          <b>${l.date}</b> ${l.time} |
+          ${l.name}<br/>
+          ${l.note || "-"}
+          <br/>
+          <button onclick="deleteOne(${l.id})">🗑 Delete</button>
+        </div>`;
+          });
+
+        // 🔥 ปิด modal แรก
+        document.getElementById("historyModal").classList.remove("show");
+
+        // 🔥 เปิด Full History (สำคัญที่สุด)
+        document.getElementById("fullHistoryModal").classList.add("show");
+      }
+
+      function adminClearHistory() {
+        const code = prompt("Enter Admin Code");
+
+        if (code !== ADMIN_CODE) {
+          alert("❌ You have no permission");
+          return;
+        }
+
+        if (!confirm("Are you sure to clear all history?")) return;
+
+        localStorage.removeItem("log_" + currentPart);
+
+        alert("✅ History cleared");
+        openFullHistory();
+      }
+      function deleteOne(id) {
+        const code = prompt("Enter Admin Code");
+        if (code !== ADMIN_CODE) {
+          alert("❌ You have no permission");
+          return;
+        }
+
+        if (!confirm("Delete this record?")) return;
+
+        const key = "log_" + currentPart;
+        let logs = JSON.parse(localStorage.getItem(key) || "[]");
+
+        logs = logs.filter((l) => l.id !== id);
+
+        localStorage.setItem(key, JSON.stringify(logs));
+        openFullHistory();
+      }
+      function deleteLast() {
+        const code = prompt("Enter Admin Code");
+        if (code !== ADMIN_CODE) {
+          alert("❌ You have no permission");
+          return;
+        }
+
+        const key = "log_" + currentPart;
+        let logs = JSON.parse(localStorage.getItem(key) || "[]");
+
+        if (logs.length === 0) {
+          alert("No history");
+          return;
+        }
+
+        if (!confirm("Delete LAST record?")) return;
+
+        logs.pop(); // ⭐ ลบอันล่าสุด
+        localStorage.setItem(key, JSON.stringify(logs));
+        openFullHistory();
+      }
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          const history = document.getElementById("historyModal");
+          const full = document.getElementById("fullHistoryModal");
+
+          if (full.classList.contains("show")) {
+            closeFullHistory();
+          } else if (history.classList.contains("show")) {
+            closeModal();
+          }
+        }
+      });
+
+      document.getElementById("historyModal").onclick = function (e) {
+        if (e.target === this) closeModal();
+      };
+
+      document.getElementById("fullHistoryModal").onclick = function (e) {
+        if (e.target === this) closeFullHistory();
+      };
+      function loadHistory() {
+        const box = document.getElementById("recentHistory");
+        const key = "log_" + currentPart;
+        const logs = JSON.parse(localStorage.getItem(key) || "[]");
+
+        box.innerHTML = "";
+
+        logs
+          .slice(-3)
+          .reverse()
+          .forEach((l) => {
+            box.innerHTML += `
+        <div class="history-row">
+          <b>${l.date}</b> ${l.time}<br/>
+          ${l.name} : ${l.note || "-"}
+        </div>
+      `;
+          });
       }
     </script>
   </body>

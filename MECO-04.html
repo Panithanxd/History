@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="th">
   <head>
     <meta charset="UTF-8" />
@@ -12,7 +12,7 @@
         font-weight: bold;
         margin: 20px auto;
         text-align: center;
-        background-color: #b2bec3;
+        background-color: #00b3ff;
         border: 2px solid black;
         padding: 10px 20px;
         border-radius: 10px;
@@ -22,13 +22,13 @@
       /* โลก absolute */
       .layout {
         position: relative;
-        width: 1650px; /* ฐานออกแบบ */
+        width: 1350px; /* ฐานออกแบบ */
         min-height: 520px;
         border: 3px solid black;
       }
       .layout-scale {
         transform-origin: top center;
-        transform: scale(min(1, 100vw / 1650));
+        transform: scale(0.85); /* 👈 ลดทั้งระบบ */
       }
 
       /* ===== ตาราง ===== */
@@ -111,8 +111,8 @@
       /* ===== Turn wheel ===== */
       .turnwheelbig {
         position: absolute;
-        width: 320px;
-        height: 320px;
+        width: 180px;
+        height: 260px;
         border-radius: 50%;
         font-size: 40px;
 
@@ -125,8 +125,8 @@
       }
       .turnwheelbig .wheel-img {
         position: absolute;
-        width: 350px; /* 🔥 รูปใหญ่กว่าปุ่ม */
-        height: 350px;
+        width: 220px; /* 🔥 รูปใหญ่กว่าปุ่ม */
+        height: 220px;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -174,8 +174,8 @@
       }
       .turnwheelsmall .wheel-img {
         position: absolute;
-        width: 180px; /* 🔥 รูปใหญ่กว่าปุ่ม */
-        height: 180px;
+        width: 150px; /* 🔥 รูปใหญ่กว่าปุ่ม */
+        height: 150px;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -224,8 +224,8 @@
 
       .turnwheelcenter .wheel-img {
         position: absolute;
-        width: 180px; /* 🔥 รูปใหญ่กว่าปุ่ม */
-        height: 180px;
+        width: 150px; /* 🔥 รูปใหญ่กว่าปุ่ม */
+        height: 150px;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -291,7 +291,7 @@
         border: 3px solid black; /* ขอบปุ่ม */
         border-radius: 10px; /* มุมปุ่มโค้ง */
         transition: transform 0.2s; /* เอฟเฟกต์ขยายปุ่ม */
-        font-size: 12px; /* ขนาดตัวอักษร */
+        font-size: 11px; /* ขนาดตัวอักษร */
         padding: 4px 6px; /* ระยะห่างข้อความ */
         cursor: pointer; /* เปลี่ยนเคอร์เซอร์เมื่อชี้ */
         text-align: center; /* จัดข้อความกึ่งกลาง */
@@ -320,7 +320,7 @@
       }
       .red {
         background: #e74c3c;
-        color: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
       }
       .yellow {
         background: #f7b731;
@@ -349,7 +349,7 @@
 
       /* ===== แถว ===== */
       .top {
-        top: 80px;
+        top: 0px;
         height: 34px;
       } /* ปุ่มแถวบน */
       .cell {
@@ -405,7 +405,7 @@
         height: 60px;
       } /* ปุ่มกว้าง 110px */
       .w111 {
-        width: 350px;
+        width: 200px;
         height: 60px;
       } /* ปุ่มกว้าง 110px */
       .w120 {
@@ -428,22 +428,26 @@
         height: 60px;
       } /* ปุ่มกว้าง 120px */
       .w260 {
-        width: 260px;
+        width: 180px;
         height: 60px;
       } /* ปุ่มกว้าง 250px */
       .w300 {
-        width: 760px;
+        width: 600px;
         height: 60px;
       } /* ปุ่มกว้าง 300px */
       .w310 {
-        width: 340px;
+        width: 250px;
         height: 60px;
       } /* ปุ่มกว้าง 310px */
 
       .w320 {
-        width: 320px;
+        width: 220px;
         height: 60px;
       } /* ปุ่มกว้าง 320px */
+      .w112 {
+        width: 180px;
+        height: 60px;
+      }
 
       /* ===== เมนูด้านข้าง ===== */
       .side-menu a {
@@ -496,9 +500,20 @@
       body {
         /* พื้นฐานตัวหนังสือ */
         margin: 0;
-        font-family: "inter ", "noto sans thai", system-ui, -apple-system,
-          BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
-          "Open Sans", "Helvetica Neue", sans-serif;
+        font-family:
+          "inter ",
+          "noto sans thai",
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          Oxygen,
+          Ubuntu,
+          Cantarell,
+          "Open Sans",
+          "Helvetica Neue",
+          sans-serif;
         line-height: 1.6;
         color: var(--text);
         background: var(--bg);
@@ -538,6 +553,28 @@
         top: 50%;
         transform: translate(-50%, -50%);
       }
+      .w2 {
+        width: 200px;
+        height: 50px;
+        font-size: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        border: 2px solid black;
+        background-color: #00b7ff;
+        cursor: pointer;
+      }
+      .w2:hover,
+      .w3:hover {
+        background: #ddd;
+        transform: scale(1.05);
+      }
+
+      .w2:active,
+      .w3:active {
+        transform: scale(0.95);
+      }
     </style>
   </head>
 
@@ -555,7 +592,9 @@
       <a href="STL-05.html">🏗️STL-05</a>
       <a href="STL-07.html">🗼STL-07</a>
     </div>
-
+    <button class="w2" onclick="window.location.href = 'Main.html'">
+      🏘️All Machine
+    </button>
     <div class="title" style="text-align: center; font: 3em sans-serif">
       MECO-04
     </div>
@@ -563,57 +602,57 @@
       <div class="layout-scale">
         <div class="layout">
           <!-- ===== Turn wheel ซ้าย ===== -->
-          <button class="turnwheelbig" style="left: 50px; top: 110px">
+          <button class="turnwheelbig" style="left: 50px; top: 150px">
             <img src="T.jpg" class="wheel-img" />
             <span>Turn<br />wheel</span>
           </button>
 
           <!-- ===== แถวบน ===== -->
-          <div class="btn-wrap" style="left: 300px; top: 80px">
+          <div class="btn-wrap" style="left: 200px; top: 80px">
             <button
               class="btn gray top w80"
-              onclick="window.location.href='Predip.html'"
+              onclick="window.location.href = '04Predip.html'"
             >
               (5-1)<br />Tank Predip
             </button>
           </div>
-          <div class="btn-wrap" style="left: 390px; top: 80px">
+          <div class="btn-wrap" style="left: 290px; top: 80px">
             <button
               class="btn gray top w320"
-              onclick="window.location.href='Plating.html'"
+              onclick="window.location.href = '04Plating.html'"
             >
               (6-1) <br />Tank Plating
             </button>
           </div>
-          <div class="btn-wrap" style="left: 720px; top: 80px">
+          <div class="btn-wrap" style="left: 520px; top: 80px">
             <button class="btn gray top w80">(6-6/7/8)<br />DWR Fresh</button>
           </div>
-          <div class="btn-wrap" style="left: 810px; top: 80px">
+          <div class="btn-wrap" style="left: 610px; top: 80px">
             <button
               class="btn gray top w111"
-              onclick="window.location.href='Neutralizer.html'"
+              onclick="window.location.href = '04Neutralizer.html'"
             >
               (7-1)<br />Tank Neutralizer
             </button>
           </div>
 
-          <div class="btn-wrap" style="left: 1170px; top: 80px">
+          <div class="btn-wrap" style="left: 820px; top: 80px">
             <button class="btn gray top w80">(8-1/2/3)<br />Blow-off</button>
           </div>
-          <div class="btn-wrap" style="left: 1260px; top: 80px">
+          <div class="btn-wrap" style="left: 910px; top: 80px">
             <button
               class="btn gray top w80"
-              onclick="window.location.href='Dryer.html'"
+              onclick="window.location.href = '04Dryer.html'"
             >
               (9-1)<br />Dryer
             </button>
           </div>
-          <div class="btn-wrap" style="left: 1350px; top: 80px">
-            <button class="btn gray top w80">Un-load</button>
+          <div class="btn-wrap" style="left: 1000px; top: 80px">
+            <button class="btn gray top w112">Un-load</button>
           </div>
           <!-- ===== Turn wheel ขวาบน ===== -->
 
-          <button class="turnwheelsmall" style="left: 1450px; top: 100px">
+          <button class="turnwheelsmall" style="left: 1180px; top: 100px">
             <img src="T.jpg" class="wheel-img" />
             <span>Turn<br />wheel</span>
           </button>
@@ -621,56 +660,56 @@
           <!-- ===== Cell ใต้ Plating ===== -->
 
           <!-- ===== แถวล่าง ===== -->
-          <div class="btn-wrap" style="left: 300px; top: 400px">
+          <div class="btn-wrap" style="left: 200px; top: 400px">
             <button class="btn gray bottom w80">(4-2)<br />CWR Fresh</button>
           </div>
-          <div class="btn-wrap" style="left: 390px; top: 400px">
+          <div class="btn-wrap" style="left: 290px; top: 400px">
             <button
               class="btn gray bottom w80"
-              onclick="window.location.href='Activation.html'"
+              onclick="window.location.href = '04Activation.html'"
             >
               (4-1)<br />Tank Activation
             </button>
           </div>
-          <div class="btn-wrap" style="left: 480px; top: 400px">
+          <div class="btn-wrap" style="left: 380px; top: 400px">
             <button class="btn gray bottom w80">(3-2)<br />CWR Fresh</button>
           </div>
 
-          <div class="btn-wrap" style="left: 570px; top: 400px">
+          <div class="btn-wrap" style="left: 470px; top: 400px">
             <button
               class="btn gray bottom w80"
-              onclick="window.location.href='Electro.html'"
+              onclick="window.location.href = '04Electro.html'"
             >
               (3-1)<br />Tank Electro Clean
             </button>
           </div>
-          <div class="btn-wrap" style="left: 660px; top: 400px">
+          <div class="btn-wrap" style="left: 560px; top: 400px">
             <button
               class="btn gray bottom w80"
-              onclick="window.location.href='HP.html'"
+              onclick="window.location.href = '04HP.html'"
             >
               (2-6)<br />Tank HP
             </button>
           </div>
 
-          <div class="btn-wrap" style="left: 750px; top: 400px">
+          <div class="btn-wrap" style="left: 650px; top: 400px">
             <button
               class="btn gray bottom w80"
-              onclick="window.location.href='DOR.html'"
+              onclick="window.location.href = '04DOR.html'"
             >
               (2-5)<br />Tank DOR
             </button>
           </div>
 
-          <div class="btn-wrap" style="left: 840px; top: 400px">
+          <div class="btn-wrap" style="left: 740px; top: 400px">
             <button
               class="btn gray bottom w260"
-              onclick="window.location.href='DEFLASH.html'"
+              onclick="window.location.href = '04DEFLASH.html'"
             >
               Tank Electro DEFLASH
             </button>
           </div>
-          <div class="btn-wrap" style="left: 1120px; top: 400px">
+          <div class="btn-wrap" style="left: 930px; top: 400px">
             <button class="btn gray bottom w310">In-load</button>
           </div>
 
@@ -696,10 +735,10 @@
 
           <!-- แถวกลางบน -->
 
-          <div class="btn-wrap" style="left: 740px; top: 190px">
+          <div class="btn-wrap" style="left: 580px; top: 190px">
             <button
               class="btn gray centerupper w300"
-              onclick="window.location.href='BeltStripper.html'"
+              onclick="window.location.href = '04BeltStripper.html'"
             >
               (11-1/2/4/5) <br />Tank Belt Stripper
             </button>
@@ -707,47 +746,53 @@
           <!-- ===== Cell ใต้แถวกลางบน ===== -->
 
           <!-- ===== Cell กลางล่าง ===== -->
-          <div class="btn-wrap" style="left: 740px; top: 300px">
+          <div class="btn-wrap" style="left: 580px; top: 300px">
             <button
               class="btn gray uppercenter w205"
-              onclick="window.location.href='BeltStripper.html'"
+              onclick="window.location.href = '04BeltStripper.html'"
             >
               (11-1/2/4/5) <br />Belt Stripper
             </button>
           </div>
 
-          <div class="btn-wrap" style="left: 1080px; top: 300px">
+          <div class="btn-wrap" style="left: 920px; top: 300px">
             <button class="btn gray uppercenter w80">
               (11-7)<br />CWR Fresh
             </button>
           </div>
-          <div class="btn-wrap" style="left: 1170px; top: 300px">
+          <div class="btn-wrap" style="left: 1010px; top: 300px">
             <button class="btn gray uppercenter w80" style="left: 1170px">
               (12-1/2)<br />Blower
             </button>
           </div>
-          <div class="btn-wrap" style="left: 1260px; top: 300px">
+          <div class="btn-wrap" style="left: 1100px; top: 300px">
             <button class="btn gray uppercenter w80">(13-1)<br />Dryer</button>
           </div>
           <!-- ===== Cell แถวกลางล่าง ===== -->
 
           <!--Turn wheel กลาง-->
 
-          <button class="turnwheelcenter" style="left: 670px; top: 230px">
+          <button class="turnwheelcenter" style="left: 500px; top: 230px">
             <img src="T.jpg" class="wheel-img" />
             <span>Turn<br />wheel</span>
           </button>
 
           <!-- ===== Turn wheel ขวาล่าง ===== -->
 
-          <button class="turnwheelsmall" style="left: 1450px; top: 330px">
+          <button class="turnwheelsmall" style="left: 1180px; top: 330px">
             <img src="T.jpg" class="wheel-img" />
             <span>Turn<br />wheel</span>
           </button>
 
           <!-- ===== Fresh ===== -->
-          <button class="Fresh red" style="left: 160px; top: 360px">1</button>
-          <button class="Fresh red" style="left: 50px; top: 250px">2</button>
+          <button class="Fresh red btn-wrap" style="left: 110px; top: 330px">
+            1
+            <div class="specBox">Fresh</div>
+          </button>
+          <button class="Fresh red btn-wrap" style="left: 30px; top: 260px">
+            2
+            <div class="specBox">Fresh</div>
+          </button>
         </div>
       </div>
     </div>
