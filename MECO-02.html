@@ -10,11 +10,12 @@
     <link rel="shortcut icon" href="boy1.png" />
 
     <title>MECO-02</title>
-   
+
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="style.css" />
     <style>
       /* ===== หัวข้อ ===== */
       .title {
@@ -531,6 +532,77 @@
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
       }
+      body {
+        background: var(--bg-main);
+        color: var(--text-strong);
+        transition:
+          background 0.25s ease,
+          color 0.25s ease;
+      }
+      /* ===== DARK THEME (default) ===== */
+      body.dark {
+        --bg-main: #484848;
+        --panel-bg: #b5b5b5;
+
+        --btn-base: #373739;
+        --btn-top: #3a3f55;
+
+        --text-main: #eaeaf0;
+        --border-soft: rgba(255, 255, 255, 0.25);
+        --glow: rgba(120, 140, 255, 0.45);
+      }
+
+      /* ===== LIGHT THEME ===== */
+      body.dark {
+        --text-main: #eaeaf0;
+        --text-strong: #ffffff; /* 👈 เข้มสุด */
+      }
+
+      body.light {
+        --text-main: #1a1d2b;
+        --text-strong: #000000; /* 👈 เข้มสุด */
+      }
+
+      body.light {
+        --bg-main: #fffefe;
+        --panel-bg: #fcfcfc;
+
+        --btn-base: #2c2c2c;
+        --btn-top: #f5f7fb;
+
+        --text-main: #1a1d2b;
+        --border-soft: rgba(0, 0, 0, 0.2);
+        --glow: rgba(60, 90, 255, 0.35);
+      }
+      .btn-pro {
+        border-radius: 14px;
+        border: 1px solid var(--border-soft);
+
+        background:
+          linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.15),
+            rgba(0, 0, 0, 0.25)
+          ),
+          linear-gradient(145deg, var(--btn-top), var(--btn-base));
+
+        color: var(--text-strong);
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 0.4px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        box-shadow:
+          inset 0 1px 2px rgba(255, 255, 255, 0.2),
+          inset 0 -3px 6px rgba(0, 0, 0, 0.6),
+          0 6px 14px rgba(0, 0, 0, 0.6);
+
+        transition: all 0.2s ease;
+      }
+
       .btn-wrap {
         position: absolute; /* 🔥 ตัวอ้างอิง */
       }
@@ -573,7 +645,7 @@
         justify-content: center;
         border-radius: 12px;
         border: 2px solid black;
-        background-color: #61ff39;
+        background-color: #ffffff;
         cursor: pointer;
       }
       .w2:hover,
@@ -586,10 +658,54 @@
       .w3:active {
         transform: scale(0.95);
       }
+      .btn-ui {
+        border-radius: 18px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+
+        background: linear-gradient(145deg, #6b4eff, #3a1fd6);
+
+        color: #fff;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 1.2;
+        text-align: center;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        cursor: pointer;
+
+        box-shadow:
+          inset 0 2px 4px rgba(255, 255, 255, 0.25),
+          inset 0 -3px 6px rgba(0, 0, 0, 0.35),
+          0 8px 16px rgba(0, 0, 0, 0.45);
+
+        transition: all 0.2s ease;
+      }
+      /* ===== Hover ปุ่มทั้งหมด (ด้านใน layout) ===== */
+      .layout .btn:hover,
+      .layout .btn-pro:hover {
+        background:
+          linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.25),
+            rgba(0, 0, 0, 0.35)
+          ),
+          linear-gradient(145deg, #0bed44, #ffc402); /* 🔥 สีตอน hover */
+
+        color: #ffffff;
+        transform: translateY(-2px) scale(1.03);
+
+        box-shadow:
+          inset 0 1px 3px rgba(255, 255, 255, 0.3),
+          inset 0 -4px 8px rgba(0, 0, 0, 0.6),
+          0 8px 18px rgba(0, 0, 0, 0.7);
+      }
     </style>
   </head>
 
-  <body>
+  <body class="dark">
     <div class="menu-toggle" onclick="toggleMenu()">
       <div class="bar"></div>
       <div class="bar"></div>
@@ -603,26 +719,33 @@
       <a href="STL-05.html">🏗️STL-05</a>
       <a href="STL-07.html">🗼STL-07</a>
     </div>
-    <button class="w2" onclick="window.location.href = 'Main.html'">
+    <button class="w2 btn-pro" onclick="window.location.href = 'Main.html'">
       🏘️All Machine
     </button>
 
-    <div class="title" style="text-align: center; font: 3em sans-serif">
+    <div class="title btn-pro" style="text-align: center; font: 3em sans-serif">
       MECO-02
     </div>
     <div class="page-center">
       <div class="layout-scale">
         <div class="layout">
+          <button onclick="toggleTheme()" class="btn btn-pro w80">
+            LIGHT MODE
+          </button>
+
           <!-- ===== Turn wheel ซ้าย ===== -->
           <button class="turnwheelbig" style="left: 50px; top: 150px">
-            <img src="T.jpg" class="wheel-img" />
+            <img
+              src="rain drop frutiger - Google Search.jpg"
+              class="wheel-img"
+            />
             <span>Turn<br />wheel</span>
           </button>
 
           <!-- ===== แถวบน ===== -->
           <div class="btn-wrap" style="left: 200px; top: 80px">
             <button
-              class="btn gray top w80"
+              class="btn gray btn-pro top w80"
               onclick="window.location.href = '02Predip.html'"
             >
               (5-1)<br />Tank Predip
@@ -630,7 +753,7 @@
           </div>
           <div class="btn-wrap" style="left: 290px; top: 80px">
             <button
-              class="btn gray top w320"
+              class="btn gray btn-pro top w320"
               onclick="window.location.href = '02Plating.html'"
             >
               (6-1) <br />Tank Plating
@@ -638,7 +761,7 @@
           </div>
           <div class="btn-wrap" style="left: 520px; top: 80px">
             <button
-              class="btn gray top w80"
+              class="btn gray top btn-pro w80"
               onclick="window.location.href = '02DWR.html'"
             >
               (6-6/7/8)<br />DWR Fresh
@@ -646,7 +769,7 @@
           </div>
           <div class="btn-wrap" style="left: 610px; top: 80px">
             <button
-              class="btn gray top w111"
+              class="btn gray top btn-pro w111"
               onclick="window.location.href = '02Neutralizer.html'"
             >
               (7-1)<br />Tank Neutralizer
@@ -654,23 +777,28 @@
           </div>
 
           <div class="btn-wrap" style="left: 820px; top: 80px">
-            <button class="btn gray top w80">(8-1/2/3)<br />Blow-off</button>
+            <button class="btn gray top btn-pro w80">
+              (8-1/2/3)<br />Blow-off
+            </button>
           </div>
           <div class="btn-wrap" style="left: 910px; top: 80px">
             <button
-              class="btn gray top w80"
+              class="btn gray top btn-pro w80"
               onclick="window.location.href = '02Dryer.html'"
             >
               (9-1)<br />Dryer
             </button>
           </div>
           <div class="btn-wrap" style="left: 1000px; top: 80px">
-            <button class="btn gray top w112">Un-load</button>
+            <button class="btn gray top btn-pro w112">Un-load</button>
           </div>
           <!-- ===== Turn wheel ขวาบน ===== -->
 
           <button class="turnwheelsmall" style="left: 1180px; top: 100px">
-            <img src="T.jpg" class="wheel-img" />
+            <img
+              src="rain drop frutiger - Google Search.jpg"
+              class="wheel-img"
+            />
             <span>Turn<br />wheel</span>
           </button>
 
@@ -678,31 +806,35 @@
 
           <!-- ===== แถวล่าง ===== -->
           <div class="btn-wrap" style="left: 200px; top: 400px">
-            <button class="btn gray bottom w80">(4-2)<br />CWR Fresh</button>
+            <button class="btn gray bottom btn-pro w80">
+              (4-2)<br />CWR Fresh
+            </button>
           </div>
           <div class="btn-wrap" style="left: 290px; top: 400px">
             <button
-              class="btn gray bottom w80"
+              class="btn gray bottom btn-pro w80"
               onclick="window.location.href = '02Activation.html'"
             >
               (4-1)<br />Tank Activation
             </button>
           </div>
           <div class="btn-wrap" style="left: 380px; top: 400px">
-            <button class="btn gray bottom w80">(3-2)<br />CWR Fresh</button>
+            <button class="btn gray bottom btn-pro w80">
+              (3-2)<br />CWR Fresh
+            </button>
           </div>
 
           <div class="btn-wrap" style="left: 470px; top: 400px">
             <button
-              class="btn gray bottom w80"
+              class="btn gray bottom btn-pro w80"
               onclick="window.location.href = '02Electro.html'"
             >
-              (3-1)<br />Tank Electro Clean
+              (3-1)<br />Electro Clean
             </button>
           </div>
           <div class="btn-wrap" style="left: 560px; top: 400px">
             <button
-              class="btn gray bottom w80"
+              class="btn gray bottom btn-pro w80"
               onclick="window.location.href = '02HP.html'"
             >
               (2-6)<br />Tank HP
@@ -711,7 +843,7 @@
 
           <div class="btn-wrap" style="left: 650px; top: 400px">
             <button
-              class="btn gray bottom w80"
+              class="btn gray bottom btn-pro w80"
               onclick="window.location.href = '02DOR.html'"
             >
               (2-5)<br />Tank DOR
@@ -720,14 +852,14 @@
 
           <div class="btn-wrap" style="left: 740px; top: 400px">
             <button
-              class="btn gray bottom w260"
+              class="btn gray bottom btn-pro w260"
               onclick="window.location.href = '02DEFLASH.html'"
             >
               Tank Electro DEFLASH
             </button>
           </div>
           <div class="btn-wrap" style="left: 930px; top: 400px">
-            <button class="btn gray bottom w310">In-load</button>
+            <button class="btn gray bottom btn-pro w310">In-load</button>
           </div>
 
           <!-- =====  deflash===== -->
@@ -754,7 +886,7 @@
 
           <div class="btn-wrap" style="left: 580px; top: 190px">
             <button
-              class="btn gray centerupper w300"
+              class="btn gray centerupper btn-pro w300"
               onclick="window.location.href = '02BeltStripper.html'"
             >
               (11-1/2/4/5) <br />Tank Belt Stripper
@@ -765,7 +897,7 @@
           <!-- ===== Cell กลางล่าง ===== -->
           <div class="btn-wrap" style="left: 580px; top: 300px">
             <button
-              class="btn gray uppercenter w205"
+              class="btn gray uppercenter btn-pro w205"
               onclick="window.location.href = '02BeltStripper.html'"
             >
               (11-1/2/4/5) <br />Belt Stripper
@@ -773,31 +905,45 @@
           </div>
 
           <div class="btn-wrap" style="left: 920px; top: 300px">
-            <button class="btn gray uppercenter w80">
+            <button class="btn gray uppercenter btn-pro w80">
               (11-7)<br />CWR Fresh
             </button>
           </div>
           <div class="btn-wrap" style="left: 1010px; top: 300px">
-            <button class="btn gray uppercenter w80" style="left: 1170px">
+            <button
+              class="btn gray uppercenter btn-pro w80"
+              style="left: 1170px"
+            >
               (12-1/2)<br />Blower
             </button>
           </div>
           <div class="btn-wrap" style="left: 1100px; top: 300px">
-            <button class="btn gray uppercenter w80" onclick="window.location.href='02Dryer13.html'">(13-1)<br />Dryer</button>
+            <button
+              class="btn gray uppercenter btn-pro w80"
+              onclick="window.location.href = '02Dryer13.html'"
+            >
+              (13-1)<br />Dryer
+            </button>
           </div>
           <!-- ===== Cell แถวกลางล่าง ===== -->
 
           <!--Turn wheel กลาง-->
 
           <button class="turnwheelcenter" style="left: 500px; top: 230px">
-            <img src="T.jpg" class="wheel-img" />
+            <img
+              src="rain drop frutiger - Google Search.jpg"
+              class="wheel-img"
+            />
             <span>Turn<br />wheel</span>
           </button>
 
           <!-- ===== Turn wheel ขวาล่าง ===== -->
 
           <button class="turnwheelsmall" style="left: 1180px; top: 330px">
-            <img src="T.jpg" class="wheel-img" />
+            <img
+              src="rain drop frutiger - Google Search.jpg"
+              class="wheel-img"
+            />
             <span>Turn<br />wheel</span>
           </button>
 
@@ -808,6 +954,10 @@
           </button>
           <button class="Fresh red btn-wrap" style="left: 30px; top: 260px">
             2
+            <div class="specBox">Fresh</div>
+          </button>
+          <button class="Fresh red btn-wrap" style="left: 110px; top: 180px">
+            3
             <div class="specBox">Fresh</div>
           </button>
         </div>
@@ -926,6 +1076,12 @@
           document.getElementById("searchBox").focus();
         }
       });
+    </script>
+    <script>
+      function toggleTheme() {
+        document.body.classList.toggle("light");
+        document.body.classList.toggle("dark");
+      }
     </script>
   </body>
 </html>

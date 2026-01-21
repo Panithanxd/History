@@ -15,23 +15,31 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
       rel="stylesheet"
     />
-
+    <link rel="stylesheet" href="style.css" />
     <style>
       body {
         padding-top: 80px; /* กัน top-bar */
       }
 
       .Name {
-        width: fit-content;
-        font-size: 36px;
+        font-size: 32px;
         font-weight: bold;
-        margin: 20px auto;
+        margin: 0 auto 20px;
         text-align: center;
-        background-color: #b2bec3;
-        border: 2px solid black;
-        padding: 10px 20px;
-        border-radius: 10px;
+        padding: 10px 28px;
+
+        color: #111;
+        background: linear-gradient(145deg, #ffffff, #dcdcdc);
+
+        border-radius: 14px;
+        border: 1px solid #555;
+
+        box-shadow:
+          inset 1px 1px 2px rgba(255, 255, 255, 0.8),
+          inset -2px -2px 4px rgba(0, 0, 0, 0.25),
+          0 4px 10px rgba(0, 0, 0, 0.35);
       }
+
 
       /*กรอบ icon*/
       .w1 {
@@ -887,296 +895,421 @@
         background-color: #06d9f5;
         cursor: pointer;
       }
+      /* =========================
+   GLOBAL PRO BUTTON STYLE
+   ========================= */
+      button {
+        font-family: "Inter", sans-serif;
+        font-weight: 600;
+        letter-spacing: 0.4px;
+
+        border-radius: 12px;
+        border: 1px solid rgba(0, 0, 0, 0.6);
+
+        background:
+          linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.25),
+            rgba(0, 0, 0, 0.35)
+          ),
+          linear-gradient(145deg, #e6e6e6, #9e9e9e);
+
+        box-shadow:
+          inset 0 1px 2px rgba(255, 255, 255, 0.4),
+          inset 0 -4px 6px rgba(0, 0, 0, 0.4),
+          0 6px 14px rgba(0, 0, 0, 0.4);
+
+        transition: all 0.2s ease;
+      }
+
+      /* hover */
+      button:hover {
+        transform: translateY(-2px) scale(1.04);
+      }
+
+      /* active */
+      button:active {
+        transform: scale(0.96);
+        box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.6);
+      }
+      .page-wrapper {
+  border: 3px solid red;   /* กรอบที่คุณอยากได้ */
+  padding: 20px;
+}
+.page-frame::after {
+        content: "";
+        position: absolute;
+        inset: 14px;
+
+        border-radius: 16px;
+
+        border: 1px solid rgba(0, 0, 0, 0.25);
+
+        box-shadow:
+          inset 1px 1px 3px rgba(255, 255, 255, 0.7),
+          inset -2px -2px 5px rgba(0, 0, 0, 0.3);
+
+        pointer-events: none;
+      }
+      .hmi-area > div,
+      .tank-area > div {
+        background: linear-gradient(145deg, #eaeaea, #bcbcbc);
+        border-radius: 12px;
+
+        box-shadow:
+          inset 1px 1px 3px rgba(255, 255, 255, 0.7),
+          inset -3px -3px 6px rgba(0, 0, 0, 0.35),
+          0 6px 14px rgba(0, 0, 0, 0.35);
+      }
+      .hmi-area > div,
+      .tank-area > div {
+        background: linear-gradient(180deg, #feffff, #00bff4);
+        border-radius: 12px;
+
+        box-shadow:
+          inset 1px 1px 3px rgba(255, 255, 255, 0.7),
+          inset -3px -3px 6px rgba(0, 0, 0, 0.35),
+          0 6px 14px rgba(0, 0, 0, 0.35);
+      }
+
+      .module-footer,
+      .module {
+        background: linear-gradient(180deg, #feffff, #2fc9f4);
+        border-radius: 12px;
+
+        box-shadow:
+          inset 1px 1px 3px rgba(255, 255, 255, 0.7),
+          inset -3px -3px 6px rgba(198, 238, 255, 0.35),
+          0 6px 14px rgba(1, 230, 255, 0.35);
+      }
+      .diode,
+      .diode-label {
+        background: linear-gradient(180deg, #feffff, #fff702);
+        border-radius: 12px;
+
+        box-shadow:
+          inset 1px 1px 3px rgba(255, 255, 255, 0.7),
+          inset -3px -3px 6px rgba(255, 0, 0, 0.35),
+          0 6px 14px #100f0359;
+      }
+      .Name {
+        background: linear-gradient(145deg, #ffffff, #535454);
+        border-radius: 12px;
+
+        box-shadow:
+          inset 1px 1px 3px rgba(212, 212, 212, 0.7),
+          inset -3px -3px 6px rgba(1, 1, 1, 0.35),
+          0 6px 14px #00000059;
+      }
+      .page-frame {
+        position: relative;
+        min-height: 100vh;
+
+        margin: 24px; /* 🔥 ขยับออกจากขอบจออีก */
+        padding: 48px; /* 🔥 ดันเนื้อหาเข้าไปลึก */
+
+        border-radius: 26px;
+
+        background: linear-gradient(145deg, #f5f5f5, #a9a9a9);
+
+        box-shadow:
+          inset 4px 4px 8px rgba(255, 255, 255, 0.9),
+          inset -6px -6px 12px rgba(0, 0, 0, 0.35),
+          0 22px 48px rgba(0, 0, 0, 0.55); /* 🔥 เงานอก หนักขึ้น */
+      }
     </style>
   </head>
 
   <body>
-    <div class="Name">DOR(2-5)</div>
-    <div class="top-bar">
-      <button class="w1" onclick="window.location.href = 'Main.html'">
-        🏘️ All Machin
-      </button>
-      <button class="w1" onclick="window.location.href = 'MECO-02.html'">
-        🗽MECO-02
-      </button>
-      <button class="w1" onclick="window.location.href = 'MECO-04.html'">
-        🏭MECO-04
-      </button>
-      <button class="w1" onclick="window.location.href = 'STL-05.html'">
-        🏗️STL-05
-      </button>
-      <button class="w1" onclick="window.location.href = 'STL-07.html'">
-        🗼STL-07
-      </button>
-    </div>
-
-    <div class="menu-toggle" onclick="toggleMenu()">
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
-    </div>
-
-    <div id="myMenu" class="side-menu">
-      <a href="Main.html">🏘️All machin </a>
-      <a href="MECO-02.html">🗽MECO-02</a>
-      <a href="MECO-04.html">🏭MECO-04</a>
-      <a href="STL-05.html">🏗️STL-05</a>
-      <a href="STL-07.html">🗼STL-07</a>
-    </div>
-    <!-- ปุ่มฝั่งซ้าย -->
-    <!-- ปุ่มฝั่งซ้าย -->
-    <!-- แถวควบคุม -->
-    <div class="nav-left">
-      <button class="w3" onclick="window.location.href = '04DEFLASH.html'">
-        <img
-          src="back-button-circular-left-arrow-symbol_icon-icons.com_74326.png"
-          class="icon"
-        />
-        <span class="btn-text">BACK</span>
-      </button>
-    </div>
-
-    <div class="nav-right">
-      <button class="w3" onclick="window.location.href = '04HP.html'">
-        <img src="next6_89384.png" class="icon" w3-wrap />
-        <span class="btn-text">NEXT</span>
-      </button>
-    </div>
-
-    <!-- ปุ่ม TOP แยก -->
-    <div class="front-bar">
-      <button class="w2" onclick="window.location.href = 'MECO-04.html'">
-        🏠
-      </button>
-    </div>
-
-    <div class="module-footer"></div>
-
-    <div class="tank-area">
-      <div class="Tank2 gray">
-        <!-- ปั๊มบน Tank -->
-        <div class="pump-group">
-          <button class="pump btn-wrap" onclick="openHistory('2P3')">
-            <svg viewBox="0 0 100 100">
-              <circle
-                cx="50"
-                cy="50"
-                r="45"
-                fill="#ddd"
-                stroke="black"
-                stroke-width="4"
-              />
-            </svg>
-            <img src="Screenshot 2026-01-16 075433.png" class="pump-img" />
-            <div class="pump-tag">2P3</div>
-
-            <div class="specBox">
-              Spec & History
-              <br />
-              Pump 2P3
-            </div>
-          </button>
-        </div>
-
-        <button class="Tank2-header">Tank DOR</button>
+    
+  
+      <div class="top-bar">
+        <button class="w1" onclick="window.location.href = 'Main.html'">
+          🏘️ All Machin
+        </button>
+        <button class="w1" onclick="window.location.href = 'MECO-02.html'">
+          🗽MECO-02
+        </button>
+        <button class="w1" onclick="window.location.href = 'MECO-04.html'">
+          🏭MECO-04
+        </button>
+        <button class="w1" onclick="window.location.href = 'STL-05.html'">
+          🏗️STL-05
+        </button>
+        <button class="w1" onclick="window.location.href = 'STL-07.html'">
+          🗼STL-07
+        </button>
       </div>
-    </div>
 
-    <!-- ===== History Modal ===== -->
-    <div id="historyModal" class="modal">
-      <div
-        class="modal-content"
-        onmousedown="event.stopPropagation()"
-        onmouseup="event.stopPropagation()"
-        onclick="event.stopPropagation()"
-      >
-        <h3 id="modalTitle">Spec & History</h3>
-        <div
-          id="specDetail"
-          style="font-size: 14px; color: #555; margin-bottom: 8px"
-        ></div>
+      <div class="menu-toggle" onclick="toggleMenu()">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
 
-        <div class="recent-box">
-          <b>Recent History</b>
-          <div
-            id="recentHistory"
-            style="color: #ffffff; background-color: #f84949"
-          ></div>
+      <div id="myMenu" class="side-menu">
+        <a href="Main.html">🏘️All machin </a>
+        <a href="MECO-02.html">🗽MECO-02</a>
+        <a href="MECO-04.html">🏭MECO-04</a>
+        <a href="STL-05.html">🏗️STL-05</a>
+        <a href="STL-07.html">🗼STL-07</a>
+      </div>
+      <!-- ปุ่มฝั่งซ้าย -->
+      <!-- ปุ่มฝั่งซ้าย -->
+      <!-- แถวควบคุม -->
+      <div class="nav-left">
+        <button class="w3" onclick="window.location.href = '04DEFLASH.html'">
+          <img
+            src="back-button-circular-left-arrow-symbol_icon-icons.com_74326.png"
+            class="icon"
+          />
+          <span class="btn-text">BACK</span>
+        </button>
+      </div>
+
+      <div class="nav-right">
+        <button class="w3" onclick="window.location.href = '04HP.html'">
+          <img src="next6_89384.png" class="icon" w3-wrap />
+          <span class="btn-text">NEXT</span>
+        </button>
+      </div>
+
+      <!-- ปุ่ม TOP แยก -->
+      <div class="front-bar">
+        <button class="w2" onclick="window.location.href = 'MECO-04.html'">
+          🏠
+        </button>
+      </div>
+<div class="page-frame">
+    <div class="Name">
+      DOR(2-5) </div>
+      <div class="module-footer"></div>
+
+      <div class="tank-area">
+        <div class="Tank2 gray">
+          <!-- ปั๊มบน Tank -->
+          <div class="pump-group">
+            <button class="pump btn-wrap" onclick="openHistory('2P3')">
+              <svg viewBox="0 0 100 100">
+                <circle
+                  cx="50"
+                  cy="50"
+                  r="45"
+                  fill="#ddd"
+                  stroke="black"
+                  stroke-width="4"
+                />
+              </svg>
+              <img src="Screenshot 2026-01-16 075433.png" class="pump-img" />
+              <div class="pump-tag">2P3</div>
+
+              <div class="specBox">
+                Spec & History
+                <br />
+                Pump 2P3
+              </div>
+            </button>
+          </div>
+
+          <button class="Tank2-header">Tank DOR</button>
         </div>
+      </div>
 
-        <hr />
-
-        <label>Name</label>
-        <input type="text" id="logName" placeholder="Your name" />
-
-        <label>Remark</label>
-        <textarea
-          id="logNote"
+      <!-- ===== History Modal ===== -->
+      <div id="historyModal" class="modal">
+        <div
+          class="modal-content"
           onmousedown="event.stopPropagation()"
           onmouseup="event.stopPropagation()"
-          placeholder="What was changed?"
-        ></textarea>
+          onclick="event.stopPropagation()"
+        >
+          <h3 id="modalTitle">Spec & History</h3>
+          <div
+            id="specDetail"
+            style="font-size: 14px; color: #555; margin-bottom: 8px"
+          ></div>
 
-        <div class="modal-actions">
-          <button onclick="saveLog()">💾 Save</button>
-          <button onclick="openFullHistory()">📜 Full History</button>
-          <button onclick="closeModal()">❌ Close</button>
+          <div class="recent-box">
+            <b>Recent History</b>
+            <div
+              id="recentHistory"
+              style="color: #ffffff; background-color: #f84949"
+            ></div>
+          </div>
+
+          <hr />
+
+          <label>Name</label>
+          <input type="text" id="logName" placeholder="Your name" />
+
+          <label>Remark</label>
+          <textarea
+            id="logNote"
+            onmousedown="event.stopPropagation()"
+            onmouseup="event.stopPropagation()"
+            placeholder="What was changed?"
+          ></textarea>
+
+          <div class="modal-actions">
+            <button onclick="saveLog()">💾 Save</button>
+            <button onclick="openFullHistory()">📜 Full History</button>
+            <button onclick="closeModal()">❌ Close</button>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- ===== Full History Modal ===== -->
-    <div id="fullHistoryModal" class="modal">
-      <div
-        class="modal-content large"
-        onmousedown="event.stopPropagation()"
-        onmouseup="event.stopPropagation()"
-        onclick="event.stopPropagation()"
-      >
-        <h3 id="fullTitle"></h3>
-        <div id="fullHistoryList"></div>
-        <button onclick="deleteLast()">↩ Delete Last</button>
-        <button onclick="adminClearHistory()">🗑 Clear History</button>
-        <button onclick="closeFullHistory()">Close</button>
+      <!-- ===== Full History Modal ===== -->
+      <div id="fullHistoryModal" class="modal">
+        <div
+          class="modal-content large"
+          onmousedown="event.stopPropagation()"
+          onmouseup="event.stopPropagation()"
+          onclick="event.stopPropagation()"
+        >
+          <h3 id="fullTitle"></h3>
+          <div id="fullHistoryList"></div>
+          <button onclick="deleteLast()">↩ Delete Last</button>
+          <button onclick="adminClearHistory()">🗑 Clear History</button>
+          <button onclick="closeFullHistory()">Close</button>
+        </div>
       </div>
-    </div>
-    <script>
-      function toggleMenu() {
-        document.getElementById("myMenu").classList.toggle("open");
-      }
-    </script>
+      <script>
+        function toggleMenu() {
+          document.getElementById("myMenu").classList.toggle("open");
+        }
+      </script>
 
-    <script>
-      const PART_CONFIG = {
-        // Spec LFD
-        "2LFD0": { title: "Spec&History", spec: "" },
-        "2LFD1": { title: "Sensor Log", spec: "Leak Flow Detector #1" },
-        "2LFD2": { title: "Sensor Log", spec: "Leak Flow Detector #2" },
-        "2LFD3": { title: "Sensor Log", spec: "Leak Flow Detector #3" },
-        "2LFD4": { title: "Sensor Log", spec: "Leak Flow Detector #4" },
-        "2LFD5": { title: "Sensor Log", spec: "Leak Flow Detector #5" },
-        "2LFD6": { title: "Sensor Log", spec: "Leak Flow Detector #6" },
-        "2LFD7": { title: "Sensor Log", spec: "Leak Flow Detector #7" },
-        "2LFD8": { title: "Sensor Log", spec: "Leak Flow Detector #8" },
-        // SpecPDL
-        "2PDL1": { title: "Level Sensor Log", spec: "PDL Level 2-1" },
-        "2PDL2": { title: "Level Sensor Log", spec: "PDL Level 2-2" },
-        "2PDL3": { title: "Level Sensor Log", spec: "PDL Level 2-3" },
-        "2PDL4": { title: "Level Sensor Log", spec: "PDL Level 2-4" },
-        // Spec Pump
-        "2P1": { title: "Pump History", spec: "Chemical Pump 2P1" },
-        "2P3": {
-          title: "Pump History",
-          spec: "Spec: 0.18kW/ Model:D13-08-300-PP/(RPM:2880rpm.)",
-        },
-        "2P6": { title: "Pump History", spec: "Chemical Pump 2P6" },
-        "2P7": { title: "Pump History", spec: "Chemical Pump 2P7" },
-        "2HL1": { title: "Level ", spec: "" },
-        // Spec Heater
-        "2H1": {
-          title: "Heater",
-          spec: "Spec&History Model:3HXOL9310.5-22-R18-P2-1000/9 kW",
-        },
-        "2H2": {
-          title: "Heater",
-          spec: "Spec&History  Model:3HXOL9310.5-22-R18-P2-1000/9 kW",
-        },
-      };
-      function resetNoteSize() {
-        const note = document.getElementById("logNote");
-        note.style.width = "";
-        note.style.height = "";
-        note.value = ""; // ⭐ ล้างข้อความ
-      }
-
-      const ADMIN_CODE = "admin"; // ← เปลี่ยนรหัสตรงนี้
-      let currentPart = "";
-
-      function openHistory(partName) {
-        currentPart = partName;
-        console.log("OPEN :", partName);
-
-        const cfg = PART_CONFIG[partName] || {
-          title: "Spec & History",
-          spec: "",
+      <script>
+        const PART_CONFIG = {
+          // Spec LFD
+          "2LFD0": { title: "Spec&History", spec: "" },
+          "2LFD1": { title: "Sensor Log", spec: "Leak Flow Detector #1" },
+          "2LFD2": { title: "Sensor Log", spec: "Leak Flow Detector #2" },
+          "2LFD3": { title: "Sensor Log", spec: "Leak Flow Detector #3" },
+          "2LFD4": { title: "Sensor Log", spec: "Leak Flow Detector #4" },
+          "2LFD5": { title: "Sensor Log", spec: "Leak Flow Detector #5" },
+          "2LFD6": { title: "Sensor Log", spec: "Leak Flow Detector #6" },
+          "2LFD7": { title: "Sensor Log", spec: "Leak Flow Detector #7" },
+          "2LFD8": { title: "Sensor Log", spec: "Leak Flow Detector #8" },
+          // SpecPDL
+          "2PDL1": { title: "Level Sensor Log", spec: "PDL Level 2-1" },
+          "2PDL2": { title: "Level Sensor Log", spec: "PDL Level 2-2" },
+          "2PDL3": { title: "Level Sensor Log", spec: "PDL Level 2-3" },
+          "2PDL4": { title: "Level Sensor Log", spec: "PDL Level 2-4" },
+          // Spec Pump
+          "2P1": { title: "Pump History", spec: "Chemical Pump 2P1" },
+          "2P3": {
+            title: "Pump History",
+            spec: "Spec: 0.18kW/ Model:D13-08-300-PP/(RPM:2880rpm.)",
+          },
+          "2P6": { title: "Pump History", spec: "Chemical Pump 2P6" },
+          "2P7": { title: "Pump History", spec: "Chemical Pump 2P7" },
+          "2HL1": { title: "Level ", spec: "" },
+          // Spec Heater
+          "2H1": {
+            title: "Heater",
+            spec: "Spec&History Model:3HXOL9310.5-22-R18-P2-1000/9 kW",
+          },
+          "2H2": {
+            title: "Heater",
+            spec: "Spec&History  Model:3HXOL9310.5-22-R18-P2-1000/9 kW",
+          },
         };
-
-        document.getElementById("modalTitle").innerText =
-          cfg.title + " : " + partName;
-
-        document.getElementById("specDetail").innerText = cfg.spec;
-
-        loadHistory();
-
-        document.getElementById("historyModal").classList.add("show");
-      }
-
-      function closeModal() {
-        document.getElementById("historyModal").classList.remove("show");
-        resetNoteSize();
-      }
-      function closeFullHistory() {
-        document.getElementById("fullHistoryModal").classList.remove("show");
-      }
-
-      // ⭐ รีเซทขนาดทุกครั้งที่ปิด
-
-      function saveLog() {
-        const nameInput = document.getElementById("logName");
-        const noteInput = document.getElementById("logNote");
-
-        const name = nameInput.value.trim();
-        const note = noteInput.value.trim();
-
-        if (!name) {
-          alert("Please enter name");
-          return;
+        function resetNoteSize() {
+          const note = document.getElementById("logNote");
+          note.style.width = "";
+          note.style.height = "";
+          note.value = ""; // ⭐ ล้างข้อความ
         }
 
-        if (!note) {
-          alert("Please enter remark");
-          return;
+        const ADMIN_CODE = "admin"; // ← เปลี่ยนรหัสตรงนี้
+        let currentPart = "";
+
+        function openHistory(partName) {
+          currentPart = partName;
+          console.log("OPEN :", partName);
+
+          const cfg = PART_CONFIG[partName] || {
+            title: "Spec & History",
+            spec: "",
+          };
+
+          document.getElementById("modalTitle").innerText =
+            cfg.title + " : " + partName;
+
+          document.getElementById("specDetail").innerText = cfg.spec;
+
+          loadHistory();
+
+          document.getElementById("historyModal").classList.add("show");
         }
 
-        const now = new Date();
+        function closeModal() {
+          document.getElementById("historyModal").classList.remove("show");
+          resetNoteSize();
+        }
+        function closeFullHistory() {
+          document.getElementById("fullHistoryModal").classList.remove("show");
+        }
 
-        const log = {
-          id: Date.now(),
-          name,
-          note,
-          date: now.toLocaleDateString(),
-          time: now.toLocaleTimeString(),
-        };
+        // ⭐ รีเซทขนาดทุกครั้งที่ปิด
 
-        const key = "log_" + currentPart;
-        const logs = JSON.parse(localStorage.getItem(key) || "[]");
-        logs.push(log);
-        localStorage.setItem(key, JSON.stringify(logs));
+        function saveLog() {
+          const nameInput = document.getElementById("logName");
+          const noteInput = document.getElementById("logNote");
 
-        // ✅ ล้างค่าหลัง save
-        nameInput.value = "";
-        noteInput.value = "";
+          const name = nameInput.value.trim();
+          const note = noteInput.value.trim();
 
-        // รีเฟรช history
-        openHistory(currentPart);
-      }
+          if (!name) {
+            alert("Please enter name");
+            return;
+          }
 
-      function openFullHistory() {
-        document.getElementById("fullTitle").innerText =
-          "Full History : " + currentPart;
+          if (!note) {
+            alert("Please enter remark");
+            return;
+          }
 
-        const logs = JSON.parse(
-          localStorage.getItem("log_" + currentPart) || "[]",
-        );
+          const now = new Date();
 
-        const box = document.getElementById("fullHistoryList");
-        box.innerHTML = "";
+          const log = {
+            id: Date.now(),
+            name,
+            note,
+            date: now.toLocaleDateString(),
+            time: now.toLocaleTimeString(),
+          };
 
-        logs
-          .slice()
-          .reverse()
-          .forEach((l, i) => {
-            box.innerHTML += `
+          const key = "log_" + currentPart;
+          const logs = JSON.parse(localStorage.getItem(key) || "[]");
+          logs.push(log);
+          localStorage.setItem(key, JSON.stringify(logs));
+
+          // ✅ ล้างค่าหลัง save
+          nameInput.value = "";
+          noteInput.value = "";
+
+          // รีเฟรช history
+          openHistory(currentPart);
+        }
+
+        function openFullHistory() {
+          document.getElementById("fullTitle").innerText =
+            "Full History : " + currentPart;
+
+          const logs = JSON.parse(
+            localStorage.getItem("log_" + currentPart) || "[]",
+          );
+
+          const box = document.getElementById("fullHistoryList");
+          box.innerHTML = "";
+
+          logs
+            .slice()
+            .reverse()
+            .forEach((l, i) => {
+              box.innerHTML += `
         <div class="history-row">
           ${logs.length - i}.
           <b>${l.date}</b> ${l.time} |
@@ -1185,107 +1318,108 @@
           <br/>
           <button onclick="deleteOne(${l.id})">🗑 Delete</button>
         </div>`;
-          });
+            });
 
-        // 🔥 ปิด modal แรก
-        document.getElementById("historyModal").classList.remove("show");
+          // 🔥 ปิด modal แรก
+          document.getElementById("historyModal").classList.remove("show");
 
-        // 🔥 เปิด Full History (สำคัญที่สุด)
-        document.getElementById("fullHistoryModal").classList.add("show");
-      }
-
-      function adminClearHistory() {
-        const code = prompt("Enter Admin Code");
-
-        if (code !== ADMIN_CODE) {
-          alert("❌ You have no permission");
-          return;
+          // 🔥 เปิด Full History (สำคัญที่สุด)
+          document.getElementById("fullHistoryModal").classList.add("show");
         }
 
-        if (!confirm("Are you sure to clear all history?")) return;
+        function adminClearHistory() {
+          const code = prompt("Enter Admin Code");
 
-        localStorage.removeItem("log_" + currentPart);
-
-        alert("✅ History cleared");
-        openFullHistory();
-      }
-      function deleteOne(id) {
-        const code = prompt("Enter Admin Code");
-        if (code !== ADMIN_CODE) {
-          alert("❌ You have no permission");
-          return;
-        }
-
-        if (!confirm("Delete this record?")) return;
-
-        const key = "log_" + currentPart;
-        let logs = JSON.parse(localStorage.getItem(key) || "[]");
-
-        logs = logs.filter((l) => l.id !== id);
-
-        localStorage.setItem(key, JSON.stringify(logs));
-        openFullHistory();
-      }
-      function deleteLast() {
-        const code = prompt("Enter Admin Code");
-        if (code !== ADMIN_CODE) {
-          alert("❌ You have no permission");
-          return;
-        }
-
-        const key = "log_" + currentPart;
-        let logs = JSON.parse(localStorage.getItem(key) || "[]");
-
-        if (logs.length === 0) {
-          alert("No history");
-          return;
-        }
-
-        if (!confirm("Delete LAST record?")) return;
-
-        logs.pop(); // ⭐ ลบอันล่าสุด
-        localStorage.setItem(key, JSON.stringify(logs));
-        openFullHistory();
-      }
-      document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape") {
-          const history = document.getElementById("historyModal");
-          const full = document.getElementById("fullHistoryModal");
-
-          if (full.classList.contains("show")) {
-            closeFullHistory();
-          } else if (history.classList.contains("show")) {
-            closeModal();
+          if (code !== ADMIN_CODE) {
+            alert("❌ You have no permission");
+            return;
           }
+
+          if (!confirm("Are you sure to clear all history?")) return;
+
+          localStorage.removeItem("log_" + currentPart);
+
+          alert("✅ History cleared");
+          openFullHistory();
         }
-      });
+        function deleteOne(id) {
+          const code = prompt("Enter Admin Code");
+          if (code !== ADMIN_CODE) {
+            alert("❌ You have no permission");
+            return;
+          }
 
-      document.getElementById("historyModal").onclick = function (e) {
-        if (e.target === this) closeModal();
-      };
+          if (!confirm("Delete this record?")) return;
 
-      document.getElementById("fullHistoryModal").onclick = function (e) {
-        if (e.target === this) closeFullHistory();
-      };
-      function loadHistory() {
-        const box = document.getElementById("recentHistory");
-        const key = "log_" + currentPart;
-        const logs = JSON.parse(localStorage.getItem(key) || "[]");
+          const key = "log_" + currentPart;
+          let logs = JSON.parse(localStorage.getItem(key) || "[]");
 
-        box.innerHTML = "";
+          logs = logs.filter((l) => l.id !== id);
 
-        logs
-          .slice(-3)
-          .reverse()
-          .forEach((l) => {
-            box.innerHTML += `
+          localStorage.setItem(key, JSON.stringify(logs));
+          openFullHistory();
+        }
+        function deleteLast() {
+          const code = prompt("Enter Admin Code");
+          if (code !== ADMIN_CODE) {
+            alert("❌ You have no permission");
+            return;
+          }
+
+          const key = "log_" + currentPart;
+          let logs = JSON.parse(localStorage.getItem(key) || "[]");
+
+          if (logs.length === 0) {
+            alert("No history");
+            return;
+          }
+
+          if (!confirm("Delete LAST record?")) return;
+
+          logs.pop(); // ⭐ ลบอันล่าสุด
+          localStorage.setItem(key, JSON.stringify(logs));
+          openFullHistory();
+        }
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") {
+            const history = document.getElementById("historyModal");
+            const full = document.getElementById("fullHistoryModal");
+
+            if (full.classList.contains("show")) {
+              closeFullHistory();
+            } else if (history.classList.contains("show")) {
+              closeModal();
+            }
+          }
+        });
+
+        document.getElementById("historyModal").onclick = function (e) {
+          if (e.target === this) closeModal();
+        };
+
+        document.getElementById("fullHistoryModal").onclick = function (e) {
+          if (e.target === this) closeFullHistory();
+        };
+        function loadHistory() {
+          const box = document.getElementById("recentHistory");
+          const key = "log_" + currentPart;
+          const logs = JSON.parse(localStorage.getItem(key) || "[]");
+
+          box.innerHTML = "";
+
+          logs
+            .slice(-3)
+            .reverse()
+            .forEach((l) => {
+              box.innerHTML += `
         <div class="history-row">
           <b>${l.date}</b> ${l.time}<br/>
           ${l.name} : ${l.note || "-"}
         </div>
       `;
-          });
-      }
-    </script>
+            });
+        }
+      </script>
+    </div>
   </body>
 </html>

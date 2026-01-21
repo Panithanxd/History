@@ -15,7 +15,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
       rel="stylesheet"
     />
-
+    <link rel="stylesheet" href="style.css" />
     <style>
       /* ===== หัวข้อ ===== */
       .title {
@@ -24,7 +24,7 @@
         font-weight: bold;
         margin: 20px auto;
         text-align: center;
-        background-color:#f87474;
+        background-color: #f87474;
         border: 2px solid black;
         padding: 10px 20px;
         border-radius: 10px;
@@ -127,6 +127,7 @@
         height: 260px;
         border-radius: 50%;
         font-size: 40px;
+        color: #fbf4f4;
 
         display: flex; /* ✅ จัดกลางจริง */
         align-items: center;
@@ -176,6 +177,7 @@
         height: 100px;
         border-radius: 50%;
         font-size: 25px;
+        color: #fbf4f4;
 
         display: flex; /* ✅ จัดกลางจริง */
         align-items: center;
@@ -225,6 +227,7 @@
         height: 100px;
         border-radius: 50%;
         font-size: 40px;
+        color: #fbf4f4;
 
         display: flex; /* ✅ จัดกลางจริง */
         align-items: center;
@@ -590,10 +593,118 @@
       .w3:active {
         transform: scale(0.95);
       }
+      /* ===== THEME ===== */
+      body.dark {
+        --bg-main: #484848;
+        --btn-base: #373739;
+        --btn-top: #3a3f55;
+        --text-strong: #ffffff;
+        --border-soft: rgba(255, 255, 255, 0.3);
+      }
+
+      body {
+        background: var(--bg-main);
+        color: var(--text-strong);
+      }
+
+      /* ===== ปุ่มมาตรฐาน (ครอบปุ่มเดิมทั้งหมด) ===== */
+      .btn {
+        border-radius: 14px;
+        border: 1px solid var(--border-soft);
+
+        background:
+          linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.15),
+            rgba(0, 0, 0, 0.25)
+          ),
+          linear-gradient(145deg, var(--btn-top), var(--btn-base));
+
+        color: var(--text-strong);
+        font-weight: 600;
+        letter-spacing: 0.4px;
+
+        box-shadow:
+          inset 0 1px 2px rgba(255, 255, 255, 0.2),
+          inset 0 -3px 6px rgba(0, 0, 0, 0.6),
+          0 6px 14px rgba(0, 0, 0, 0.6);
+
+        transition: all 0.2s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+
+      .btn:active {
+        transform: scale(0.96);
+      }
+      body.light {
+        --text-main: #1a1d2b;
+        --text-strong: #000000; /* 👈 เข้มสุด */
+      }
+
+      body.light {
+        --bg-main: #fffefe;
+        --panel-bg: #fcfcfc;
+
+        --btn-base: #9e9b9b;
+        --btn-top: #a1acc0;
+
+        --text-main: #1a1d2b;
+        --border-soft: rgba(0, 0, 0, 0.2);
+        --glow: rgba(60, 90, 255, 0.35);
+      }
+      .btn-pro {
+        border-radius: 14px;
+        border: 1px solid var(--border-soft);
+
+        background:
+          linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.15),
+            rgba(0, 0, 0, 0.25)
+          ),
+          linear-gradient(145deg, var(--btn-top), var(--btn-base));
+
+        color: var(--text-strong);
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 0.4px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        box-shadow:
+          inset 0 1px 2px rgba(255, 255, 255, 0.2),
+          inset 0 -3px 6px rgba(0, 0, 0, 0.6),
+          0 6px 14px rgba(0, 0, 0, 0.6);
+
+        transition: all 0.2s ease;
+      }
+      .layout .btn:hover,
+      .layout .btn-pro:hover {
+        background:
+          linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.25),
+            rgba(0, 0, 0, 0.35)
+          ),
+          linear-gradient(145deg, #3700ff, #ffffff); /* 🔥 สีตอน hover */
+
+        color: #ffffff;
+        transform: translateY(-2px) scale(1.03);
+
+        box-shadow:
+          inset 0 1px 3px rgba(255, 255, 255, 0.3),
+          inset 0 -4px 8px rgba(0, 0, 0, 0.6),
+          0 8px 18px rgba(0, 0, 0, 0.7);
+      }
     </style>
   </head>
 
-  <body>
+  <body class="dark">
     <div class="menu-toggle" onclick="toggleMenu()">
       <div class="bar"></div>
       <div class="bar"></div>
@@ -607,18 +718,23 @@
       <a href="STL-05.html">🏗️STL-05</a>
       <a href="STL-07.html">🗼STL-07</a>
     </div>
-    <button class="w2" onclick="window.location.href = 'Main.html'">
+    <button class="w2 btn" onclick="window.location.href = 'Main.html'">
       🏘️All Machine
     </button>
-    <div class="title" style="text-align: center; font: 3em sans-serif">
+    <div class="title btn" style="text-align: center; font: 3em sans-serif">
       STL-05
     </div>
+
     <div class="page-center">
       <div class="layout-scale">
         <div class="layout">
+          <button onclick="toggleTheme()" class="btn btn-pro w80">
+            LIGHT MODE
+          </button>
+
           <!-- ===== Turn wheel ซ้าย ===== -->
           <button class="turnwheelbig" style="left: 80px; top: 140px">
-            <img src="T.jpg" class="wheel-img" />
+            <img src="1.jpg" class="wheel-img" />
             <span>Turn<br />wheel</span>
           </button>
 
@@ -745,7 +861,12 @@
             </button>
           </div>
           <div class="btn-wrap" style="left: 1040px; top: 400px">
-            <button class="btn gray bottom w120" onclick="window.location.href = '07DI_2.html'">DI_2</button>
+            <button
+              class="btn gray bottom w120"
+              onclick="window.location.href = '07DI_2.html'"
+            >
+              DI_2
+            </button>
           </div>
 
           <!-- =====  deflash===== -->
@@ -761,7 +882,7 @@
           <!--Turn wheel กลาง-->
 
           <button class="turnwheelcenter" style="left: 1150px; top: 220px">
-            <img src="T.jpg" class="wheel-img" />
+            <img src="1.jpg" class="wheel-img" />
             <span>Turn<br />wheel</span>
           </button>
 
@@ -882,6 +1003,12 @@
           document.getElementById("searchBox").focus();
         }
       });
+    </script>
+    <script>
+      function toggleTheme() {
+        document.body.classList.toggle("light");
+        document.body.classList.toggle("dark");
+      }
     </script>
   </body>
 </html>

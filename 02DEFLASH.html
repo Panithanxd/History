@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -9,28 +9,35 @@
     <link rel="icon" href="boy1.png" />
     <link rel="shortcut icon" href="boy1.png" />
 
-     <title>MECO-02</title>
-     <meta name="description" content="MECO-02" />
+    <title>MECO-02</title>
+    <meta name="description" content="MECO-02" />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
       rel="stylesheet"
     />
-
+    <link rel="stylesheet" href="style.css" />
     <style>
       body {
         padding-top: 50px; /* กัน top-bar */
       }
 
       .Name {
-        width: fit-content;
-        font-size: 36px;
+        font-size: 32px;
         font-weight: bold;
-        margin: 20px auto;
+        margin: 0 auto 20px;
         text-align: center;
-        background-color: #61ff39;
-        border: 2px solid black;
-        padding: 10px 20px;
-        border-radius: 10px;
+        padding: 10px 28px;
+
+        color: #111;
+        background: linear-gradient(145deg, #ffffff, #dcdcdc);
+
+        border-radius: 14px;
+        border: 1px solid #555;
+
+        box-shadow:
+          inset 1px 1px 2px rgba(255, 255, 255, 0.8),
+          inset -2px -2px 4px rgba(0, 0, 0, 0.25),
+          0 4px 10px rgba(0, 0, 0, 0.35);
       }
 
       /*กรอบ icon*/
@@ -108,8 +115,8 @@
         gap: 80px;
         align-items: flex-end; /* ฐาน module เสมอกัน */
         justify-content: center;
-          margin-left: -80px;
-          margin-top: -60px;
+        margin-left: -80px;
+        margin-top: 100px;
       }
 
       .module {
@@ -153,8 +160,6 @@
         z-index: 100000;
       }
 
-      
-
       /* กล่องอุปกรณ์ */
       .module {
         position: relative;
@@ -183,7 +188,7 @@
         background: #fff;
       }
       .tank-area {
-        margin-top: 40px;
+        margin-top: 100px;
         display: flex;
         justify-content: center;
         gap: 80px;
@@ -237,7 +242,7 @@
         height: 100px;
         border: 2px solid #000;
         border-radius: 8px;
-        margin-bottom:0px;
+        margin-bottom: 0px;
 
         display: flex;
         justify-content: center;
@@ -889,25 +894,142 @@
         background-color: #61ff39;
         cursor: pointer;
       }
+      /* =========================
+   GLOBAL PRO BUTTON STYLE
+   ========================= */
+      button {
+        font-family: "Inter", sans-serif;
+        font-weight: 600;
+        letter-spacing: 0.4px;
+
+        border-radius: 12px;
+        border: 1px solid rgba(0, 0, 0, 0.6);
+
+        background:
+          linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.25),
+            rgba(0, 0, 0, 0.35)
+          ),
+          linear-gradient(145deg, #e6e6e6, #9e9e9e);
+
+        box-shadow:
+          inset 0 1px 2px rgba(255, 255, 255, 0.4),
+          inset 0 -4px 6px rgba(0, 0, 0, 0.4),
+          0 6px 14px rgba(0, 0, 0, 0.4);
+
+        transition: all 0.2s ease;
+      }
+
+      /* hover */
+      button:hover {
+        transform: translateY(-2px) scale(1.04);
+      }
+
+      /* active */
+      button:active {
+        transform: scale(0.96);
+        box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.6);
+      }
+      .page-frame::after {
+        content: "";
+        position: absolute;
+        inset: 14px;
+
+        border-radius: 16px;
+
+        border: 1px solid rgba(0, 0, 0, 0.25);
+
+        box-shadow:
+          inset 1px 1px 3px rgba(255, 255, 255, 0.7),
+          inset -2px -2px 5px rgba(0, 0, 0, 0.3);
+
+        pointer-events: none;
+      }
+      .hmi-area > div,
+      .tank-area > div {
+        background: linear-gradient(145deg, #eaeaea, #bcbcbc);
+        border-radius: 12px;
+
+        box-shadow:
+          inset 1px 1px 3px rgba(255, 255, 255, 0.7),
+          inset -3px -3px 6px rgba(0, 0, 0, 0.35),
+          0 6px 14px rgba(0, 0, 0, 0.35);
+      }
+      .hmi-area > div,
+      .tank-area > div {
+        background: linear-gradient(180deg, #feffff, #00bff4);
+        border-radius: 12px;
+
+        box-shadow:
+          inset 1px 1px 3px rgba(255, 255, 255, 0.7),
+          inset -3px -3px 6px rgba(0, 0, 0, 0.35),
+          0 6px 14px rgba(0, 0, 0, 0.35);
+      }
+
+      .module-footer,
+      .module {
+        background: linear-gradient(180deg, #feffff, #2fc9f4);
+        border-radius: 12px;
+
+        box-shadow:
+          inset 1px 1px 3px rgba(255, 255, 255, 0.7),
+          inset -3px -3px 6px rgba(198, 238, 255, 0.35),
+          0 6px 14px rgba(1, 230, 255, 0.35);
+      }
+      .diode,
+      .diode-label {
+        background: linear-gradient(180deg, #feffff, #ff0202);
+        border-radius: 12px;
+
+        box-shadow:
+          inset 1px 1px 3px rgba(255, 255, 255, 0.7),
+          inset -3px -3px 6px rgba(252, 3, 206, 0.35),
+          0 6px 14px #100f0359;
+      }
+      .Name {
+        background: linear-gradient(145deg, #ffffff, #2c2b2b);
+        border-radius: 12px;
+
+        box-shadow:
+          inset 1px 1px 3px rgba(212, 212, 212, 0.7),
+          inset -3px -3px 6px rgba(1, 1, 1, 0.35),
+          0 6px 14px #00000059;
+      }
+      .page-frame {
+        position: relative;
+        min-height: 100vh;
+
+        margin: 24px; /* 🔥 ขยับออกจากขอบจออีก */
+        padding: 48px; /* 🔥 ดันเนื้อหาเข้าไปลึก */
+
+        border-radius: 26px;
+
+        background: linear-gradient(145deg, #f5f5f5, #a9a9a9);
+
+        box-shadow:
+          inset 4px 4px 8px rgba(255, 255, 255, 0.9),
+          inset -6px -6px 12px rgba(0, 0, 0, 0.35),
+          0 22px 48px rgba(0, 0, 0, 0.55); /* 🔥 เงานอก หนักขึ้น */
+      }
     </style>
   </head>
 
   <body>
-    <div class="Name">DEFLASH</div>
     <div class="top-bar">
-      <button class="w1" onclick="window.location.href='Main.html'">
+      <button class="w1" onclick="window.location.href = 'Main.html'">
         🏘️ All Machin
       </button>
-      <button class="w1" onclick="window.location.href='MECO-02.html'">
+      <button class="w1" onclick="window.location.href = 'MECO-02.html'">
         🗽MECO-02
       </button>
-      <button class="w1" onclick="window.location.href='MECO-04.html'">
+      <button class="w1" onclick="window.location.href = 'MECO-04.html'">
         🏭MECO-04
       </button>
-      <button class="w1" onclick="window.location.href='STL-05.html'">
+      <button class="w1" onclick="window.location.href = 'STL-05.html'">
         🏗️STL-05
       </button>
-      <button class="w1" onclick="window.location.href='STL-07.html'">
+      <button class="w1" onclick="window.location.href = 'STL-07.html'">
         🗼STL-07
       </button>
     </div>
@@ -929,7 +1051,7 @@
     <!-- ปุ่มฝั่งซ้าย -->
     <!-- แถวควบคุม -->
     <div class="nav-left">
-      <button class="w3" onclick="window.location.href='02Dryer13.html'">
+      <button class="w3" onclick="window.location.href = '02Dryer13.html'">
         <img
           src="back-button-circular-left-arrow-symbol_icon-icons.com_74326.png"
           class="icon"
@@ -939,23 +1061,21 @@
     </div>
 
     <div class="nav-right">
-      <button class="w3" onclick="window.location.href='02DOR.html'">
-       <img
-          src="next6_89384.png"
-          class="icon"
-        />
+      <button class="w3" onclick="window.location.href = '02DOR.html'">
+        <img src="next6_89384.png" class="icon" />
         <span class="btn-text">NEXT</span>
       </button>
     </div>
 
     <!-- ปุ่ม TOP แยก -->
     <div class="front-bar">
-      <button class="w2" onclick="window.location.href='MECO-02.html'">
+      <button class="w2" onclick="window.location.href = 'MECO-02.html'">
         🏠
       </button>
     </div>
 
-    <div class="page-center main-content">
+    <div class="page-frame">
+      <div class="Name">DEFLASH</div>
       <div class="hmi-area">
         <div class="cell-group"></div>
         <div class="module-wrap gray">
@@ -977,10 +1097,7 @@
                 </div>
               </div>
               <div class="btn-wrap"></div>
-              <div class="btn-wrap">
-                
-                
-              </div>
+              <div class="btn-wrap"></div>
             </div>
           </div>
           <div class="LFD-OUT1 btn-wrap">
@@ -1022,9 +1139,7 @@
                   Level 2-3
                 </div>
               </div>
-              <div class="btn-wrap">
-                
-              </div>
+              <div class="btn-wrap"></div>
             </div>
             <div class="LFD-OUT1 btn-wrap">
               <button class="LFD-OUT gray" onclick="openHistory('2LFD4')">
@@ -1058,9 +1173,7 @@
                 </div>
               </div>
 
-              <div class="btn-wrap">
-               
-              </div>
+              <div class="btn-wrap"></div>
             </div>
 
             <div class="LFD-OUT1 btn-wrap">
@@ -1094,9 +1207,7 @@
                 </div>
               </div>
 
-              <div class="LFD-in btn-wrap" onclick="openHistory('2LFD1')">
-         
-              </div>
+              <div class="LFD-in btn-wrap" onclick="openHistory('2LFD1')"></div>
             </div>
             <div class="LFD-OUT1 btn-wrap" onclick="openHistory('2LFD0')">
               <button class="LFD-OUT gray">2LFD0</button>
@@ -1166,11 +1277,10 @@
               Heater 2H2
             </div>
           </div>
-         
         </div>
 
         <div class="Tank1 gray">
-          <div class="Tank1-header">Tank Deflash</div>
+          <button class="Tank1-header">Tank Deflash</button>
           <div class="pump-group">
             <button class="pump btn-wrap" onclick="openHistory('2P1')">
               <svg viewBox="0 0 100 100">
@@ -1191,8 +1301,6 @@
                 Pump 2P1
               </div>
             </button>
-
-  
           </div>
 
           <div class="HT1 btn-wrap">
@@ -1225,8 +1333,10 @@
 
         <div class="recent-box">
           <b>Recent History</b>
-          <div id="recentHistory"
-          style="color: #ffffff;background-color: #f84949;"></div>
+          <div
+            id="recentHistory"
+            style="color: #ffffff; background-color: #f84949"
+          ></div>
         </div>
 
         <hr />
@@ -1400,7 +1510,7 @@
           "Full History : " + currentPart;
 
         const logs = JSON.parse(
-          localStorage.getItem("log_" + currentPart) || "[]"
+          localStorage.getItem("log_" + currentPart) || "[]",
         );
 
         const box = document.getElementById("fullHistoryList");
